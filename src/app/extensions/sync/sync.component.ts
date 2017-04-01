@@ -3,13 +3,10 @@ import { Git } from './../git/init';
 import { DB } from './../db/db';
 import { Mkdir as Dir } from './dir';
 import { AppState } from './../../store/appState.store';
-
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import electron = require('electron');
 let { ipcRenderer } = electron;
 import Redis = require('ioredis');
-
-// let redis = ;
 import isOnline = require('is-online');
 @Component({
     selector: 'sbox',

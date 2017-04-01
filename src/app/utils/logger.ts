@@ -3,18 +3,19 @@ import { configs } from './../extensions/db/config/configs';
 import * as cluster from 'cluster';
 import * as mkdirp from 'mkdirp';
 import * as path from 'path';
-
-import { transports, Logger } from 'winston';
+import { transports } from 'winston';
+var winston = require('winston');
 import { Request, Response } from 'express';
 
 let config = configs.getLoggingConfig();
-config.file.filename = `${path.join(config.directory, '../sequelize-express/logs')}/${config.file.filename}`;
+config.file.filename = `${path.join(config.directory, './logs')}/${config.file.filename}`;
 
 if (cluster.isMaster) {
-    mkdirp.sync(path.join(config.directory, '../sequelize-express/logs'));
+    mkdirp.sync(path.join(config.directory, './logs'));
 }
 
-export const logger = new Logger({
+
+export const logger = new winston.Logger({
     transports: [
         new transports.File(config.file),
         new transports.Console(config.console)

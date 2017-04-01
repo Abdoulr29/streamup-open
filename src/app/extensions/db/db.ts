@@ -1,6 +1,4 @@
 import { models, sequelize } from './models/index';
-
-
 import Sequelize = require('sequelize');
 export interface DirObject {
 
