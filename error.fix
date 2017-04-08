@@ -1,0 +1,27 @@
+//now DB can be manipulated this way
+./node_modules/sequelize-cli/bin/sequelize db:migrate
+
+Error: reference 'refs/heads/master' not found
+    at Error (native)(Error on init.ts or init.js while testing a single file functionality to be solved soon);
+//do cd node_modules/.bin/./electron-rebuild to make the things work
+//if pg-native fail please find this article https://www.npmjs.com/package/pg-native
+
+Note the electron-v1.3-win32-x64. You might have something different depending on the electron version you installed
+cd node_modules/sqlite3 and then run the following:
+
+npm run prepublish
+node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.3-win32-x64
+node-gyp rebuild --target=1.3.5 --arch=x64 --target_platform=win32 --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.3-win32-x64
+
+cd node_modules/sqlite3 and then run the following:
+npm run prepublish
+node-gyp configure --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.3-win32-x64
+node-gyp rebuild --target=1.3.5 --arch=x64 --target_platform=win32 --dist-url=https://atom.io/download/atom-shell --module_name=node_sqlite3 --module_path=../lib/binding/electron-v1.3-win32-x64
+
+--module_path replace with what you got from the MODULE_NOT_FOUND error
+--target_platform win32, darwin or linux
+--arch x64 or ia32
+--target the version of electron you are using
+
+//now use externals in webpack to exclude module that you don't want to bundle no need to bundle everything
+
