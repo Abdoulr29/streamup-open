@@ -9,7 +9,10 @@ const path = require('path');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+
 // var nodeExternals = require('webpack-node-externals');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 /*
  * Config
  */
@@ -24,29 +27,23 @@ var config = {
     'vendor': './src/vendor.ts',
     'app': './src/app/app',
   },
+  // target: 'electron-renderer',
+  
   externals: {
     ioredis: {
       commonjs: "ioredis",
       amd: "ioredis",
       root: "ioredis" // indicates global variable
     },
+    path: 'require("path")',
     sequelize: {
       commonjs: "sequelize",
       amd: "sequelize",
       root: "sequelize" // indicates global variable
     },
-    winston: {
-      commonjs: "winston",
-      amd: "winston",
-      root: "winston" // indicates global variable
-    }
+    
+    winston:'require("winston")'
 
-    // function (context, request, callback) {
-    //   if (/^nodegit/.test(request))
-    //     return callback(null, 'commonjs' + " " + request);
-    //   callback();
-
-    // },
   },
 
   // Config for our build files
@@ -84,6 +81,7 @@ var config = {
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        
         exclude: [/\.(spec|e2e)\.ts$/]
       },
 
@@ -123,7 +121,7 @@ var config = {
     // Plugin: CommonsChunkPlugin
     // Description: Shares common code between the pages.
     // It identifies common modules and put them into a commons chunk.
-    //
+    //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     new webpack.optimize.CommonsChunkPlugin({
@@ -140,6 +138,7 @@ var config = {
       from: 'src/assets',
       to: 'assets'
     }]),
+    new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
     /**
      * Plugin LoaderOptionsPlugin (experimental)
      *
@@ -165,9 +164,9 @@ var config = {
   // we need this due to problems with es6-shim
   node: {
     global: true,
-    progress: false,
+    progress: true,
     crypto: 'empty',
-    module: false,
+    module: true,
     clearImmediate: false,
     setImmediate: false
   }
@@ -183,7 +182,7 @@ module.exports = config;
 // target: 'node', // in order to ignore built-in modules like path, fs, etc. 
 // externals: [nodeExternals()], // in order to ignore all modules in node_modules folder 
 // output: {
-//     filename: 'bundle.js',
+    // filename: 'bundle.js',
 // }
 
 // };

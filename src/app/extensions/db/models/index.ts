@@ -36,13 +36,13 @@ import { logger } from './../../../utils/logger';
 // db.Sequelize = Sequelize;
 // module.exports = db;
 // require('continuation-local-storage');
+// import * as cls from 'continuation-local-storage';
+var cls = require('continuation-local-storage');
 
-
-import * as cls from 'continuation-local-storage';
 import * as fs from 'fs';
 import * as path from 'path';
 import * as SequelizeStatic from 'sequelize';
-
+// var SequelizeStatic = require('sequelize');
 import { Sequelize } from 'sequelize';
 export interface SequelizeModels {
   Folder: SequelizeStatic.Model<FolderInstance, FolderAttributes>;
@@ -54,12 +54,14 @@ class Database {
   private _sequelize: Sequelize;
 
   constructor() {
-    this._basename = path.basename(module.filename);
+    this._basename = path.basename('name');
     let dbConfig = configs.getDatabaseConfig();
 
     if (dbConfig.logging) {
       dbConfig.logging = logger.info;
+
     }
+
 
     (SequelizeStatic as any).cls = cls.createNamespace('sequelize-transaction');
     this._sequelize = new SequelizeStatic(dbConfig.database, '',
@@ -69,7 +71,7 @@ class Database {
     fs.readdirSync(__dirname).filter((file: string) => {
       return (file !== this._basename) && (file !== 'interfaces');
     }).forEach((file: string) => {
-      let model = this._sequelize.import(path.join(__dirname, file));
+      let model = this._sequelize.import(__dirname + '/' + file);
       this._models[(model as any).name] = model;
     });
 
