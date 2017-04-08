@@ -8,6 +8,9 @@ import electron = require('electron');
 let { ipcRenderer } = electron;
 import Redis = require('ioredis');
 import isOnline = require('is-online');
+import request = require('request');
+import fs = require('fs');
+import os = require('os');
 @Component({
     selector: 'sbox',
     styleUrls: ['./sync.theme.scss'],
@@ -23,6 +26,7 @@ export class SyncComponent implements OnInit {
 
         this.http.getFolders()
             .subscribe(res => {
+
                 res.forEach(folder => {
                     this.db.saveFolder(folder);
                     if (folder.parent === 0) {
@@ -31,60 +35,54 @@ export class SyncComponent implements OnInit {
                         } else if (folder.has_copy === 0) {
                             this.createFolder(folder.name);
                         }
-                    }
-                });
-
-            });
-        //TODO the subfolders not being injected inside the parent folder by now(need help on this).
-        var tmp = [];
-        this.http.getSubFolders()
-            .subscribe(res => {
-                res.forEach(subf => {
-                    var oldId = 0;
-                    if (oldId !== subf.id) {
-                        oldId = subf.id;
-                        this.http.getPath(subf.id)
-                            .subscribe(res => {
-                                res.forEach(fpath => {
-                                    tmp.push(fpath.name);
-
+                    } else {
+                        this.http.getPath(folder.id)
+                            .subscribe(response => {
+                                var tmp = [];
+                                response.forEach(subfolder => {
+                                    tmp.push(subfolder.name);
                                 });
+                                this.createFolder(tmp.join('/'));
                             });
-
                     }
-
                 });
+
             });
 
+    }
+    download(uri: string, filename: string, callback: any) {
+
+        request.head(uri, function (err, res, body) {
+
+            request(uri).pipe(fs.createWriteStream(os.homedir() + '/Sbox/' + filename)).on('close', callback);
+
+        });
 
     }
     ngOnInit() {
 
         this.dir.create('Sbox');
+        this.download('https://www.google.com/images/srpr/logo3w.png', 'google.png', function () {
+
+        });
+
+        
+        // isOnline().then(online => {
+        //     if (!online) {
+        //         new Redis().subscribe('folder-created');
+        //         new Redis().on('message', function (channel, message) {
+        //             console.log(message);
+        //         });
+        //     }
+        // });
 
     }
-    isAutoSync(e) {
-        type toggle = 'true' | 'false';
-        
+    isAutoSync(direma: boolean) {
+        return direma = !direma;
     }
     autoFetch() {
 
-        isOnline().then(online => {
 
-            if (!online) {
-                new Redis().subscribe('folder-created');
-                new Redis().on('message', function (channel, message) {
-
-                    let serialized = JSON.parse(message);
-        //             console.log(serialized);
-        //             //TODO understanding how to fetch file online and save on Disk using fs.createWriteStream :: new Buffer("utf-8") is faked don't know what i am doing!
-        //             // new Watcher().downloadOnFly('http://localhost:8000/api/downloads/file/' + serialized.data.fileHandle + '/' + serialized.data.folderId, serialized.data.fileName, '', function (res: boolean) {
-        //             //     console.log('done');
-        //             // });
-
-                });
-            }
-        });
     }
     createFolder(name: String) {
 
@@ -94,3 +92,5 @@ export class SyncComponent implements OnInit {
     }
     checkAuthentication() { }
 }
+
+
