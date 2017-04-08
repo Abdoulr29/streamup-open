@@ -20,12 +20,12 @@ export interface LoggingConfig {
 export const loggingConfig: LoggingConfig = {
   file: {
     level: 'error',
-    filename: 'sequelize-typescript-example.log',
+    filename: 'sbox.log',
     handleExceptions: true,
     json: true,
     maxsize: 5242880,
     maxFiles: 100,
-    colorize: false
+    colorize: true
   },
   console: {
     level: 'error',
@@ -33,6 +33,7 @@ export const loggingConfig: LoggingConfig = {
     json: false,
     colorize: true
   },
+
   directory: __dirname
 // tslint:disable-next-line:eofline
 };

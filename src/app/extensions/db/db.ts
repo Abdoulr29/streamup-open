@@ -36,14 +36,15 @@ export class DB {
     }
     saveFolder(data: DirObject) {
 
-        // sequelize.sync({ force: true }).done(function () {
-        //     models.Folder.create({
-        //         name: 'richie',
-        //         parent_id: 1
-        //     }).done(function (res) {
-        //         console.log(res);
-        //     });
-        // });
+        sequelize.sync({ force: true }).done(function () {
+            models.Folder.create({
+                name: 'richie',
+                parent_id: 1
+            }).done(function (res) {
+                console.log(res);
+            });
+        });
+        
 
     }
 }

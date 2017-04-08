@@ -29,6 +29,7 @@ isOnline().then(online => {
 	//console.log(os.homedir);
   });
 };
+
 // download('https://www.google.com/images/srpr/logo3w.png', 'google.png', function(){
 //   console.log('done');
 // });
