@@ -68,3 +68,4 @@ src/app/dist
 #removeMyAlg
 testingDir.js
 src/app/extensions/db/node_modules
+src/dist

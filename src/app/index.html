@@ -1,71 +1,84 @@
-<!DOCTYPE html>
-<html lang="">
+<!doctype html>
+<html lang="en">
 
 <head>
-
-  <title>
-    StreamUpBox|Drive
-  </title>
-
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Simple electron angular2">
-
-  <!-- use http://www.favicon-generator.org/ to replace files in public/icon-->
-  <link rel="apple-touch-icon" sizes="57x57" href="/assets/icon/apple-icon-57x57.png">
-  <link rel="apple-touch-icon" sizes="60x60" href="/assets/icon/apple-icon-60x60.png">
-  <link rel="apple-touch-icon" sizes="72x72" href="/assets/icon/apple-icon-72x72.png">
-  <link rel="apple-touch-icon" sizes="76x76" href="/assets/icon/apple-icon-76x76.png">
-  <link rel="apple-touch-icon" sizes="114x114" href="/assets/icon/apple-icon-114x114.png">
-  <link rel="apple-touch-icon" sizes="120x120" href="/assets/icon/apple-icon-120x120.png">
-  <link rel="apple-touch-icon" sizes="144x144" href="/assets/icon/apple-icon-144x144.png">
-  <link rel="apple-touch-icon" sizes="152x152" href="/assets/icon/apple-icon-152x152.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/icon/apple-icon-180x180.png">
-  <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon/android-icon-192x192.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/icon/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="96x96" href="/assets/icon/favicon-96x96.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/icon/favicon-16x16.png">
-  <link rel="manifest" href="/assets/manifest.json">
-  <meta name="msapplication-TileColor" content="#00bcd4">
-  <meta name="msapplication-TileImage" content="/assets/icon/ms-icon-144x144.png">
-  <meta name="theme-color" content="#00bcd4">
-  <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">
-  <link rel="stylesheet" href="../assets/custom.css">
-  <link rel="stylesheet" href="../assets/bootstrap.css">
-  <link rel="stylesheet" href="../assets/styles.css">
-  <link rel="stylesheet" href="../assets/font-awesome.css">
-  <link rel="stylesheet" href="../../node_modules/winstrap/dist/css/winstrap.css">
-  <!-- end favicon -->
+  <meta charset="UTF-8" />
+  <title>StreamUpBox|Drive</title>
   
+  <link rel="stylesheet" href="../assets/css/jquery-ui.css">
+  <script src="../assets/js/jquery-2.2.1.min.js"></script>
+  <!--<script src="../assets/jquery-ui.js"></script>-->
+  
+  <!--<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">-->
+  <!--<link rel="stylesheet" href="../../node_modules/winstrap/dist/css/winstrap.css">-->
+  <link rel="stylesheet" href="../assets/custom.css">
+ 
+  <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
+  <script type="text/javascript">
+    function updateTime() {
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var day = currentTime.getDate();
+      var month = currentTime.getMonth() + 1;
+      var year = currentTime.getFullYear();
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      var v = hours + ":" + minutes + "<br/>" + month + "/" + day + "/" + year;
+      setTimeout("updateTime()", 1000);
+      document.getElementById('system-time').innerHTML = v;
+    }
+    updateTime();
 
+  </script>
+  
 </head>
 
 <body>
 
-  <div id="title-bar">
+  <!--<div id="title-bar">
     <div id="title-bar-btns">
       <button id="min-btn">-</button>
       <button id="max-btn">+</button>
       <button id="close-btn">x</button>
     </div>
-  </div>
+  </div>-->
+  
   <div id="content">
-
+    <!--start angular part-->
     <sbox>
-      <!--Loading...-->
+
       <div class="progress-bar" style="margin-left: 560px;margin-top: 240px;">
         <div class="progress-circle"></div>
         <div class="progress-circle"></div>
         <div class="progress-circle"></div>
         <div class="progress-circle"></div>
         <div class="progress-circle"></div>
-        <!--<div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:60">
-          <span class="sr-only">60%</span>
-        </div>-->
+
       </div>
     </sbox>
+    <!--end angular part-->
+  </div>
 
+  <div id="taskbar-wrapper">
+    <div id="taskbar">
+      <div id="quickstart" >
+        <img src="../assets/img/windows-blue.png">
+        <img src="../assets/img/chrome.png">
+        <!--<img src="../assets/img/conemu.png">
+        <img src="../assets/img/sublime.png">
+        <img src="../assets/img/onenote.png">
+        <img src="../assets/img/android-studio.png">-->
+        <!--<img src="../assets/img/feed-daemon.png">
+          <img src="../assets/img/snipping-tool.png">
+          <img src="../assets/img/mendeley.png">-->
+      </div>
+      <div id="tray">
+        <span id="system-time">14:04<br/>11/4/2015</span>
+        <span id="language">ENG</span>
+      </div>
+    </div>
   </div>
 
 
@@ -79,9 +92,5 @@
   <script src="../assets/js/annotated.js"></script>
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="../../node_modules/winstrap/dist/js/vendor/jquery.min.js"></script>
-  
   <script src="../assets/js/e-design.js"></script>
-  
 </body>
-
-</html>

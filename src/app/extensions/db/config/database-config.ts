@@ -7,7 +7,7 @@ export interface DatabaseConfig {
 }
 
 export const databaseConfig: DatabaseConfig = {
-  database: 'proof-concept',
+  database: 'sbox',
   dialect: 'sqlite',
   logging: true,
   force: true,

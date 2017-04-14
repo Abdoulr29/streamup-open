@@ -1,88 +1,68 @@
-// @joaogarin
-
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const path = require('path');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-
-// var nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//TODO install html-webpack-plugin correctly
 
-/*
- * Config
- */
 var config = {
   // for faster builds use 'eval'
   devtool: 'source-map',
   // cache: false,
 
-  // our angular app
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
     'app': './src/app/app',
   },
-  // target: 'electron-renderer',
-  
   externals: {
     ioredis: {
       commonjs: "ioredis",
       amd: "ioredis",
       root: "ioredis" // indicates global variable
     },
+    'electron-config': 'electron-config',
     path: 'require("path")',
     sequelize: {
       commonjs: "sequelize",
       amd: "sequelize",
       root: "sequelize" // indicates global variable
     },
-    
-    winston:'require("winston")'
+
+    winston: 'require("winston")'
 
   },
 
-  // Config for our build files
   output: {
     path: helpers.root('src/app/dist'),
     filename: '[name].js',
+    libraryTarget : 'commonjs-module',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
-  /*
-   * Options affecting the resolving of modules.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#resolve
-   */
+
   resolve: {
-    /*
-     * An array of extensions that should be used to resolve modules.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-     */
+
     extensions: ['.ts', '.js', '.json', '.css', '.html'],
 
     // An array of directory names to be resolved to the current directory
     modules: [helpers.root('src'), 'node_modules'],
 
   },
-  /*
-   * Options affecting the resolving of modules.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#resolve
-   */
+
   module: {
     rules: [
       // Support for .ts files.
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-        
-        exclude: [/\.(spec|e2e)\.ts$/]
+        exclude: ['/\.(spec|e2e)\.ts$/','/\.(extensions)']
+      },
+      {
+        test: /\.(extensions)\.ts$/,
+        loaders: ['ts-loader']
       },
 
       // Support for *.json files.
@@ -121,7 +101,7 @@ var config = {
     // Plugin: CommonsChunkPlugin
     // Description: Shares common code between the pages.
     // It identifies common modules and put them into a commons chunk.
-    //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+    //
     // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
     // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
     new webpack.optimize.CommonsChunkPlugin({
@@ -138,7 +118,7 @@ var config = {
       from: 'src/assets',
       to: 'assets'
     }]),
-    new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
+    // new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
     /**
      * Plugin LoaderOptionsPlugin (experimental)
      *
@@ -164,9 +144,9 @@ var config = {
   // we need this due to problems with es6-shim
   node: {
     global: true,
-    progress: true,
+    progress: false,
     crypto: 'empty',
-    module: true,
+    module: false,
     clearImmediate: false,
     setImmediate: false
   }
@@ -177,12 +157,3 @@ var config = {
  */
 config.target = 'electron-renderer';
 module.exports = config;
-// module.exports = {
-// entry: path.resolve('./index.js'),
-// target: 'node', // in order to ignore built-in modules like path, fs, etc. 
-// externals: [nodeExternals()], // in order to ignore all modules in node_modules folder 
-// output: {
-    // filename: 'bundle.js',
-// }
-
-// };
