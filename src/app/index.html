@@ -4,34 +4,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>StreamUpBox|Drive</title>
-  
   <link rel="stylesheet" href="../assets/css/jquery-ui.css">
   <script src="../assets/js/jquery-2.2.1.min.js"></script>
   <!--<script src="../assets/jquery-ui.js"></script>-->
-  
   <!--<link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.css">-->
   <link rel="stylesheet" href="../assets/css/winstrap/dist/css/winstrap.css">
   <link rel="stylesheet" href="../assets/custom.css">
- 
   <link rel="stylesheet" type="text/css" href="../assets/css/style.css">
-  <script type="text/javascript">
-    function updateTime() {
-      var currentTime = new Date();
-      var hours = currentTime.getHours();
-      var minutes = currentTime.getMinutes();
-      var day = currentTime.getDate();
-      var month = currentTime.getMonth() + 1;
-      var year = currentTime.getFullYear();
-      if (minutes < 10) {
-        minutes = "0" + minutes;
-      }
-      var v = hours + ":" + minutes + "<br/>" + month + "/" + day + "/" + year;
-      setTimeout("updateTime()", 1000);
-      document.getElementById('system-time').innerHTML = v;
-    }
-    updateTime();
-
-  </script>
   
 </head>
 
@@ -66,13 +45,9 @@
       <div id="quickstart" >
         <img src="../assets/img/windows-blue.png">
         <img src="../assets/img/chrome.png">
-        <!--<img src="../assets/img/conemu.png">
         <img src="../assets/img/sublime.png">
         <img src="../assets/img/onenote.png">
-        <img src="../assets/img/android-studio.png">-->
-        <!--<img src="../assets/img/feed-daemon.png">
-          <img src="../assets/img/snipping-tool.png">
-          <img src="../assets/img/mendeley.png">-->
+        <img src="../assets/img/android-studio.png">
       </div>
       <div id="tray">
         <span id="system-time">14:04<br/>11/4/2015</span>
@@ -85,7 +60,6 @@
   <script src="dist/polyfills.js"></script>
   <script src="dist/vendor.js"></script>
   <script src="dist/app.js"></script>
-  <script src="../assets/js/default.js"></script>
   <script src="../assets/js/jquery-2.2.1.min.js"></script>
   <script src="../../node_modules/tether/dist/js/tether.js"></script>
   <script src="../assets/js/depedencies.js"></script>
@@ -93,4 +67,23 @@
   <script src="../../node_modules/bootstrap/dist/js/bootstrap.js"></script>
   <script src="../../node_modules/winstrap/dist/js/vendor/jquery.min.js"></script>
   <script src="../assets/js/e-design.js"></script>
+
+  <script type="text/javascript">
+    function updateTime() {
+      var currentTime = new Date();
+      var hours = currentTime.getHours();
+      var minutes = currentTime.getMinutes();
+      var day = currentTime.getDate();
+      var month = currentTime.getMonth() + 1;
+      var year = currentTime.getFullYear();
+      if (minutes < 10) {
+        minutes = "0" + minutes;
+      }
+      var v = hours + ":" + minutes + "<br/>" + month + "/" + day + "/" + year;
+      setTimeout("updateTime()", 1000);
+      document.getElementById('system-time').innerHTML = v;
+    }
+    updateTime();
+
+  </script>
 </body>

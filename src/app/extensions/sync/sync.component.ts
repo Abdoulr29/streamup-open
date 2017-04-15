@@ -10,6 +10,7 @@ import { electron } from 'electron';
 import request = require('request');
 import fs = require('fs');
 import os = require('os');
+import * as path from 'path';
 @Component({
     selector: 'sbox',
     styleUrls: ['./sync.theme.scss'],
@@ -17,6 +18,7 @@ import os = require('os');
     templateUrl: './sync.component.html',
     providers: [HttpClientService]
 })
+
 export class SyncComponent implements OnInit {
     isDarkTheme: boolean = false;
     db = new DB();
@@ -25,11 +27,12 @@ export class SyncComponent implements OnInit {
 
     }
     copyFolders(): Promise<any> {
-
+        console.log('here is called');
         return new Promise((resolve, reject) => {
-            this.http.getFolders()
-                .subscribe(res => {
-                    setTimeout(() => {
+            setTimeout(() => {
+                this.http.getFolders()
+                    .subscribe(res => {
+
                         res.forEach(folder => {
                             this.db.saveFolder(folder);
                             if (folder.parent === 0) {
@@ -50,8 +53,9 @@ export class SyncComponent implements OnInit {
                             }
                         });
                         resolve();
-                    }, 0);
-                });
+
+                    });
+            }, 0);
         });
 
     }
@@ -65,28 +69,25 @@ export class SyncComponent implements OnInit {
 
     }
 
-    async ngOnInit() {
-        await this.dir.create('Sbox').then((res) => {})
-        .catch((err) => {
-             //keep retrying until it succeed to create a folder.
-             this.dir.create('Sbox');
-        });
-        await this.copyFolders().then((res) => { }).catch((error) => { });
+     ngOnInit() {
+
+        this.dir.create('Sbox').then((res) => { })
+            .catch((err) => {
+               
+                this.dir.create('Sbox');
+            });
+        this.copyFolders().then((res) => {  }).catch((error) => { });
         this.downloadFiles();
 
-        this.download('http://localhost:8000/api/downloads/fileApi/3/0', 'name.png', function () {
-            console.log('we have done downloading file');
-        });
+        // this.download('http://localhost:8000/api/downloads/fileApi/3/0', 'name.png', function () {
+        //     console.log('we have done downloading file');
+        // });
 
     }
     downloadFiles(): Promise<any> {
         return new Promise((resolve, reject) => {
             setTimeout((res) => {
-                // let data = this.http.getFiles();
-                // var tmp = [];
-                // if (data.length > 5) {
-                //     //TODO complent this method once I am in cool mood.
-                // }
+
             }, 0);
         });
     }
@@ -103,7 +104,7 @@ export class SyncComponent implements OnInit {
         new Git().init('Sbox/' + name);
 
     }
-   
+
 }
 
 
