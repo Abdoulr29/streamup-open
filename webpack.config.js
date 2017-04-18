@@ -15,6 +15,7 @@ var config = {
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
+    'core': './src/app/extensions/render/core.js',
     'app': './src/app/app',
   },
   externals: {
