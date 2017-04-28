@@ -60,7 +60,7 @@ release
 src/app/dist
 
 #Remove configurations from version control
-config.json
+#config.json
 
 #Remove vscode files
 .vscode
@@ -68,3 +68,4 @@ config.json
 #removeMyAlg
 testingDir.js
 src/app/extensions/db/node_modules
+src/dist

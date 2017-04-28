@@ -1,6 +1,7 @@
+
 import { configs } from './../config/configs';
-import { FolderAttributes, FolderInstance } from './../../../interfaces/folder-interface';
-import { logger } from './../../../utils/logger';
+// import { FolderAttributes, FolderInstance } from './../../../interfaces/folder-interface';
+// import { logger } from './../../../utils/logger';
 
 // import { ProductInstance } from "./var../src../app../interfaces/product-interface";
 // var fs = require('fs');
@@ -117,85 +118,68 @@ export const sequelize = database.getSequelize();
 //       });
 //     });
 
-//     return promise;
-//   }
+// import * as cls from 'continuation-local-storage';
+// import { configs } from './../config/configs';
+// import { FolderAttributes, FolderInstance } from './../../../interfaces/folder-interface';
+// // import { logger } from './../../../utils/logger';
+// // import { Model } from '~sequelize/lib/model';
+// import * as fs from 'fs';
+// import * as path from 'path';
+// import * as SequelizeStatic from 'sequelize';
 
-//   retrieveProduct(name: string): Promise<ProductInstance> {
-//     let promise = new Promise<ProductInstance>((resolve: Function, reject: Function) => {
-//       sequelize.transaction((t: Transaction) => {
-//         return models.Product.findOne({where: {name: name}}).then((product: ProductInstance) => {
-//           if (product) {
-//             logger.info(`Retrieved product with name ${name}.`);
-//           } else {
-//             logger.info(`Product with name ${name} does not exist.`);
-//           }
-//           resolve(product);
-//         }).catch((error: Error) => {
-//           logger.error(error.message);
-//           reject(error);
-//         });
-//       });
+
+
+// import { Sequelize } from 'sequelize';
+// export interface SequelizeModels {
+//   Folder: SequelizeStatic.Model;
+
+// }
+
+// class Database {
+//   private _basename: string;
+//   private _models: SequelizeModels;
+//   private _sequelize: Sequelize;
+
+//   constructor() {
+//     this._basename = path.basename(module.filename);
+//     let dbConfig = configs.getDatabaseConfig();
+
+//     if (dbConfig.logging) {
+//       dbConfig.logging = logger.info;
+
+//     }
+//     (Sequelize as any).cls = cls.createNamespace('sbox'); //changed namespace from sequelize-transaction=>sbox 
+//     this._sequelize = new Sequelize(dbConfig.database, '',
+//       '', dbConfig.dialect);
+//     this._models = ({} as any);
+
+//     fs.readdirSync(__dirname).filter((file: string) => {
+//       return (file !== this._basename) && (file !== 'interfaces');
+//     }).forEach((file: string) => {
+//       let model = this._sequelize.import(__dirname + '/' + file);
+//       this._models[(model as any).name] = model;
 //     });
 
-//     return promise;
+//     Object.keys(this._models).forEach((modelName: string) => {
+//       if (typeof this._models[modelName].associate === 'function') {
+//         this._models[modelName].associate(this._models);
+//       }
+//     });
 //   }
 
-//   retrieveProducts(): Promise<Array<ProductInstance>> {
-//     let promise = new Promise<Array<ProductInstance>>((resolve: Function, reject: Function) => {
-//       sequelize.transaction((t: Transaction) => {
-//         return models.Product.findAll().then((products: Array<ProductInstance>) => {
-//           logger.info('Retrieved all products.');
-//           resolve(products);
-//         }).catch((error: Error) => {
-//           logger.error(error.message);
-//           reject(error);
-//         });
-//       });
-//     });
-
-//     return promise;
+//   getModels() {
+//     return this._models;
 //   }
 
-//   updateProduct(name: string, productAttributes: any): Promise<void> {
-//     let promise = new Promise<void>((resolve: Function, reject: Function) => {
-//       sequelize.transaction((t: Transaction) => {
-//         return models.Product.update(productAttributes, {where: {name: name}})
-//           .then((results: [number, Array<ProductInstance>]) => {
-//           if (results.length > 0) {
-//             logger.info(`Updated product with name ${name}.`);
-//           } else {
-//             logger.info(`Product with name ${name} does not exist.`);
-//           }
-//           resolve(null);
-//         }).catch((error: Error) => {
-//           logger.error(error.message);
-//           reject(error);
-//         });
-//       });
-//     });
-
-//     return promise;
-//   }
-
-//   deleteProduct(name: string): Promise<void> {
-//     let promise = new Promise<void>((resolve: Function, reject: Function) => {
-//       sequelize.transaction((t: Transaction) => {
-//         return models.Product.destroy({where: {name: name}}).then((afffectedRows: number) => {
-//           if (afffectedRows > 0) {
-//             logger.info(`Deleted product with name ${name}`);
-//           } else {
-//             logger.info(`Product with name ${name} does not exist.`);
-//           }
-//           resolve(null);
-//         }).catch((error: Error) => {
-//           logger.error(error.message);
-//           reject(error);
-//         });
-//       });
-//     });
-
-//     return promise;
+//   getSequelize() {
+//     return this._sequelize;
 //   }
 // }
 
-// export const productService = new ProductService();
+// const database = new Database();
+// export const models = database.getModels();
+// export const sequelize = database.getSequelize();
+
+
+
+

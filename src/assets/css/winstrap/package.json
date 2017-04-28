@@ -1,0 +1,134 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "winstrap@^0.5.11",
+        "scope": null,
+        "escapedName": "winstrap",
+        "name": "winstrap",
+        "rawSpec": "^0.5.11",
+        "spec": ">=0.5.11 <0.6.0",
+        "type": "range"
+      },
+      "/var/www/Sbox"
+    ]
+  ],
+  "_from": "winstrap@>=0.5.11 <0.6.0",
+  "_id": "winstrap@0.5.11",
+  "_inCache": true,
+  "_location": "/winstrap",
+  "_nodeVersion": "4.6.0",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/winstrap-0.5.11.tgz_1478892183122_0.26585329696536064"
+  },
+  "_npmUser": {
+    "name": "mlijanto",
+    "email": "martinlijanto@xbox.com"
+  },
+  "_npmVersion": "2.15.9",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "winstrap@^0.5.11",
+    "scope": null,
+    "escapedName": "winstrap",
+    "name": "winstrap",
+    "rawSpec": "^0.5.11",
+    "spec": ">=0.5.11 <0.6.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/winstrap/-/winstrap-0.5.11.tgz",
+  "_shasum": "dd4908914262814f389ae26d569264d67b3e460e",
+  "_shrinkwrap": null,
+  "_spec": "winstrap@^0.5.11",
+  "_where": "/var/www/Sbox",
+  "author": {
+    "name": "Microsoft"
+  },
+  "bugs": {
+    "url": "https://github.com/winjs/winstrap/issues"
+  },
+  "contributors": [
+    {
+      "name": "Frederic Perrin"
+    },
+    {
+      "name": "Mathias Wendlinger"
+    },
+    {
+      "name": "Romain Hottlet"
+    },
+    {
+      "name": "Andy Seres"
+    },
+    {
+      "name": "Rachel Nizhnikova"
+    },
+    {
+      "name": "Miles Grover"
+    },
+    {
+      "name": "Joe Day"
+    },
+    {
+      "name": "Martin Lijanto"
+    }
+  ],
+  "dependencies": {
+    "bootstrap-sass": "3.3.7",
+    "jquery": "^2.1.4"
+  },
+  "description": "Winstrap is the official Bootstrap theme for Microsoft design language.",
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-assemble": "^0.4.0",
+    "grunt-bump": "^0.3.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-connect": "^0.9.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-cssmin": "^0.14.0",
+    "grunt-contrib-jshint": "^0.11.2",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-file-exists": "^0.1.2",
+    "grunt-notify": "^0.4.1",
+    "grunt-sass": "^1.0.0",
+    "jshint-stylish": "^2.0.0"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "dd4908914262814f389ae26d569264d67b3e460e",
+    "tarball": "https://registry.npmjs.org/winstrap/-/winstrap-0.5.11.tgz"
+  },
+  "gitHead": "11fb35582ac3b9f750738da93c44293ffaaa0294",
+  "homepage": "http://winstrap.azurewebsites.net",
+  "keywords": [
+    "microsoft",
+    "windows",
+    "bootstrap",
+    "theme"
+  ],
+  "license": "MIT",
+  "main": "dist/*",
+  "maintainers": [
+    {
+      "name": "joeday",
+      "email": "heyjoeday@gmail.com"
+    },
+    {
+      "name": "mlijanto",
+      "email": "martinlijanto@xbox.com"
+    }
+  ],
+  "name": "winstrap",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/winjs/winstrap.git"
+  },
+  "scripts": {},
+  "version": "0.5.11"
+}

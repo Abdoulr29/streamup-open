@@ -43,19 +43,11 @@ export class LoginComponent {
             });
         });
     }
-    _(x) {
-        return document.getElementById(x);
-    }
-    enableFilepanel() {
-        this._('filePanel').style.display = 'block';
-        this._('filedisablelebtn').style.display = 'block';
-        this._('filenablebtn').style.display = 'none';
-    }
-    disableFilepanel() {
-        this._('filedisablelebtn').style.display = 'none';
-        this._('filenablebtn').style.display = 'block';
-        this._('filePanel').style.display = 'none';
-    }
+
+    /**
+     * Checks for authentication
+     * If existing auth in localstorage just gets the user data immediately
+     */
     checkAuth() {
         let storageToken = window.localStorage.getItem('authToken');
 

@@ -1,28 +1,29 @@
-// @joaogarin
-
-/*
- * Helper: root(), and rootDir() are defined at the bottom
- */
 const webpack = require('webpack');
 const helpers = require('./helpers');
 const path = require('path');
 
 var CopyWebpackPlugin = require('copy-webpack-plugin');
 const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
+<<<<<<< HEAD
 var nodeExternals = require('webpack-node-externals');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 /*
  * Config
  */
+=======
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+//TODO install html-webpack-plugin correctly
+
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
 var config = {
   // for faster builds use 'eval'
   devtool: 'source-map',
   // cache: false,
 
-  // our angular app
   entry: {
     'polyfills': './src/polyfills.ts',
     'vendor': './src/vendor.ts',
+    'core': './src/app/extensions/render/core.js',
     'app': './src/app/app',
   },
   // target: 'electron-renderer',
@@ -33,54 +34,59 @@ var config = {
       amd: "ioredis",
       root: "ioredis" // indicates global variable
     },
+<<<<<<< HEAD
+=======
+    'electron-config': 'electron-config',
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
     path: 'require("path")',
     sequelize: {
       commonjs: "sequelize",
       amd: "sequelize",
       root: "sequelize" // indicates global variable
     },
+<<<<<<< HEAD
     
     winston:'require("winston")'
+=======
+
+    winston: 'require("winston")'
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
 
   },
 
-  // Config for our build files
   output: {
     path: helpers.root('src/app/dist'),
     filename: '[name].js',
+    libraryTarget : 'commonjs-module',
     sourceMapFilename: '[name].map',
     chunkFilename: '[id].chunk.js'
   },
-  /*
-   * Options affecting the resolving of modules.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#resolve
-   */
+
   resolve: {
-    /*
-     * An array of extensions that should be used to resolve modules.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-     */
+
     extensions: ['.ts', '.js', '.json', '.css', '.html'],
 
     // An array of directory names to be resolved to the current directory
     modules: [helpers.root('src'), 'node_modules'],
 
   },
-  /*
-   * Options affecting the resolving of modules.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#resolve
-   */
+
   module: {
     rules: [
       // Support for .ts files.
       {
         test: /\.ts$/,
         loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+<<<<<<< HEAD
         
         exclude: [/\.(spec|e2e)\.ts$/]
+=======
+        exclude: ['/\.(spec|e2e)\.ts$/','/\.(extensions)']
+      },
+      {
+        test: /\.(extensions)\.ts$/,
+        loaders: ['ts-loader']
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
       },
 
       // Support for *.json files.
@@ -136,7 +142,11 @@ var config = {
       from: 'src/assets',
       to: 'assets'
     }]),
+<<<<<<< HEAD
     new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
+=======
+    // new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
     /**
      * Plugin LoaderOptionsPlugin (experimental)
      *
@@ -175,6 +185,7 @@ var config = {
  */
 config.target = 'electron-renderer';
 module.exports = config;
+<<<<<<< HEAD
 // module.exports = {
 // entry: path.resolve('./index.js'),
 // target: 'node', // in order to ignore built-in modules like path, fs, etc. 
@@ -184,3 +195,5 @@ module.exports = config;
 // }
 
 // };
+=======
+>>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
