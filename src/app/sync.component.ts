@@ -1,21 +1,16 @@
-import { HttpClientService } from './../../services/http-client.service';
-import { Git } from './../git/init';
-import { DB } from './../db/db';
-import { Mkdir as Dir } from './dir';
-import { AppState } from './../../store/appState.store';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { HttpClientService } from './services/http-client.service';
 
+import { Mkdir as Dir } from './extensions/dir/mkdir';
+
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+HttpClientService
 import electron = require('electron');
 let { ipcRenderer } = electron;
-import Redis = require('ioredis');
-import isOnline = require('is-online');
-import request = require('request');
-import fs = require('fs');
-import os = require('os');
+
 
 @Component({
     selector: 'sbox',
-    styleUrls: ['./sync.theme.scss'],
+    styleUrls: ['./sync.component.css'],
     encapsulation: ViewEncapsulation.None,
     templateUrl: './sync.component.html',
     providers: [HttpClientService]
@@ -23,7 +18,7 @@ import os = require('os');
 
 export class SyncComponent implements OnInit {
     isDarkTheme: boolean = false;
-    db = new DB();
+    // db = new DB();
     dir = new Dir();
     constructor(private http: HttpClientService) {
 
@@ -37,7 +32,7 @@ export class SyncComponent implements OnInit {
                     .subscribe(res => {
 
                         res.forEach(folder => {
-                            this.db.saveFolder(folder);
+                            // this.db.saveFolder(folder);
                             if (folder.parent === 0) {
                                 if (folder.has_copy === 1) {
                                     this.createFolder(folder.name + '(' + folder.copy_count + ')');
@@ -64,12 +59,12 @@ export class SyncComponent implements OnInit {
     }
     download(uri: string, filename: string, callback: any) {
         //TODO set auth token on this download request 
-        request.head(uri, function (err, res, body) {
+        // request.head(uri, function (err, res, body) {
 
-            request(uri).pipe(fs.createWriteStream(os.homedir() + '/Sbox/' + filename)).on('close', callback);
+        //     request(uri).pipe(fs.createWriteStream(os.homedir() + '/Sbox/' + filename)).on('close', callback);
 
 
-        });
+        // });
 
     }
 
@@ -77,11 +72,7 @@ export class SyncComponent implements OnInit {
     
      ngOnInit() {
 
-        this.dir.create('Sbox').then((res) => { })
-            .catch((err) => {
-               
-                this.dir.create('Sbox');
-            });
+        this.dir.create('Sbox');
         this.copyFolders().then((res) => {  }).catch((error) => { });
         this.downloadFiles();
 
@@ -108,7 +99,7 @@ export class SyncComponent implements OnInit {
     createFolder(name: String) {
 
         this.dir.create('Sbox/' + name);
-        new Git().init('Sbox/' + name);
+        // new Git().init('Sbox/' + name);
 
     }
 

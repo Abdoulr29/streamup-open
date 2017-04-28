@@ -5,7 +5,7 @@
   "license": "MIT",
   "scripts": {
     "run": "electron .",
-    "start": "concurrently \"yarn build\" \"electron dist/entry.js\"",
+    "start": "concurrently \"webpack-dev-server --port=4200\" \"electron src/entry.live.js\"",
     "ng": "ng",
     "build": "webpack",
     "test": "karma start ./karma.conf.js",
@@ -29,7 +29,6 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
-    "electron-reload": "^1.1.0",
     "rxjs": "^5.1.0",
     "zone.js": "^0.8.4"
   },
