@@ -1,199 +1,315 @@
-const webpack = require('webpack');
-const helpers = require('./helpers');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
-
-var CopyWebpackPlugin = require('copy-webpack-plugin');
-const LoaderOptionsPlugin = require('webpack/lib/LoaderOptionsPlugin');
-<<<<<<< HEAD
-var nodeExternals = require('webpack-node-externals');
+const ProgressPlugin = require('webpack/lib/ProgressPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-/*
- * Config
- */
-=======
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-//TODO install html-webpack-plugin correctly
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const autoprefixer = require('autoprefixer');
+const postcssUrl = require('postcss-url');
 
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
-var config = {
-  // for faster builds use 'eval'
-  devtool: 'source-map',
-  // cache: false,
+const { NoEmitOnErrorsPlugin, LoaderOptionsPlugin } = require('webpack');
+const { GlobCopyWebpackPlugin, BaseHrefWebpackPlugin } = require('@angular/cli/plugins/webpack');
+const { CommonsChunkPlugin } = require('webpack').optimize;
+const { AotPlugin } = require('@ngtools/webpack');
 
-  entry: {
-    'polyfills': './src/polyfills.ts',
-    'vendor': './src/vendor.ts',
-    'core': './src/app/extensions/render/core.js',
-    'app': './src/app/app',
+const nodeModules = path.join(process.cwd(), 'node_modules');
+const entryPoints = ["inline","polyfills","sw-register","styles","vendor","main"];
+const baseHref = "";
+const deployUrl = "";
+
+
+
+
+module.exports = {
+  "target": "electron-renderer",
+  "devtool": "source-map",
+  "resolve": {
+    "extensions": [
+      ".ts",
+      ".js"
+    ],
+    "modules": [
+      "./node_modules"
+    ]
   },
-  // target: 'electron-renderer',
-  
-  externals: {
-    ioredis: {
-      commonjs: "ioredis",
-      amd: "ioredis",
-      root: "ioredis" // indicates global variable
-    },
-<<<<<<< HEAD
-=======
-    'electron-config': 'electron-config',
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
-    path: 'require("path")',
-    sequelize: {
-      commonjs: "sequelize",
-      amd: "sequelize",
-      root: "sequelize" // indicates global variable
-    },
-<<<<<<< HEAD
-    
-    winston:'require("winston")'
-=======
-
-    winston: 'require("winston")'
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
-
+  "resolveLoader": {
+    "modules": [
+      "./node_modules"
+    ]
   },
-
-  output: {
-    path: helpers.root('src/app/dist'),
-    filename: '[name].js',
-    libraryTarget : 'commonjs-module',
-    sourceMapFilename: '[name].map',
-    chunkFilename: '[id].chunk.js'
+  "entry": {
+    "main": [
+      "./src/main.ts"
+    ],
+    "polyfills": [
+      "./src/polyfills.ts"
+    ],
+    "styles": [
+      "./src/styles.css"
+    ]
   },
-
-  resolve: {
-
-    extensions: ['.ts', '.js', '.json', '.css', '.html'],
-
-    // An array of directory names to be resolved to the current directory
-    modules: [helpers.root('src'), 'node_modules'],
-
+  "output": {
+    "path": path.join(process.cwd(), "dist"),
+    "filename": "[name].bundle.js",
+    "chunkFilename": "[id].chunk.js"
   },
-
-  module: {
-    rules: [
-      // Support for .ts files.
+  "module": {
+    "rules": [
       {
-        test: /\.ts$/,
-        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-<<<<<<< HEAD
-        
-        exclude: [/\.(spec|e2e)\.ts$/]
-=======
-        exclude: ['/\.(spec|e2e)\.ts$/','/\.(extensions)']
+        "enforce": "pre",
+        "test": /\.js$/,
+        "loader": "source-map-loader",
+        "exclude": [
+          /\/node_modules\//
+        ]
       },
       {
-        test: /\.(extensions)\.ts$/,
-        loaders: ['ts-loader']
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
-      },
-
-      // Support for *.json files.
-      {
-        test: /\.json$/,
-        loader: 'json-loader'
+        "test": /\.json$/,
+        "loader": "json-loader"
       },
       {
-        test: /\.scss$/,
-        exclude: /node_modules/,
-        loaders: ['raw-loader', 'sass-loader'] // sass-loader not scss-loader
+        "test": /\.html$/,
+        "loader": "raw-loader"
       },
-
-      // support for .html antd .css as raw text
       {
-        test: /\.html$/,
-        loader: 'raw-loader',
-        exclude: [helpers.root('app/index.html')]
+        "test": /\.(eot|svg)$/,
+        "loader": "file-loader?name=[name].[hash:20].[ext]"
       },
-
-      // support for fonts
       {
-        test: /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9=&.]+)?$/,
-        loader: 'file-loader?name=dist/[name]-[hash].[ext]'
+        "test": /\.(jpg|png|gif|otf|ttf|woff|woff2|cur|ani)$/,
+        "loader": "url-loader?name=[name].[hash:20].[ext]&limit=10000"
       },
-
-      // support for svg icons
       {
-        test: /\.svg/,
-        loader: 'svg-url-loader'
+        "exclude": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.css$/,
+        "loaders": [
+          "exports-loader?module.exports.toString()",
+          "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+          "postcss-loader"
+        ]
+      },
+      {
+        "exclude": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.scss$|\.sass$/,
+        "loaders": [
+          "exports-loader?module.exports.toString()",
+          "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+          "postcss-loader",
+          "sass-loader"
+        ]
+      },
+      {
+        "exclude": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.less$/,
+        "loaders": [
+          "exports-loader?module.exports.toString()",
+          "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+          "postcss-loader",
+          "less-loader"
+        ]
+      },
+      {
+        "exclude": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.styl$/,
+        "loaders": [
+          "exports-loader?module.exports.toString()",
+          "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+          "postcss-loader",
+          "stylus-loader?{\"sourceMap\":false,\"paths\":[]}"
+        ]
+      },
+      {
+        "include": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.css$/,
+        "loaders": ExtractTextPlugin.extract({
+  "use": [
+    "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+    "postcss-loader"
+  ],
+  "fallback": "style-loader",
+  "publicPath": ""
+})
+      },
+      {
+        "include": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.scss$|\.sass$/,
+        "loaders": ExtractTextPlugin.extract({
+  "use": [
+    "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+    "postcss-loader",
+    "sass-loader"
+  ],
+  "fallback": "style-loader",
+  "publicPath": ""
+})
+      },
+      {
+        "include": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.less$/,
+        "loaders": ExtractTextPlugin.extract({
+  "use": [
+    "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+    "postcss-loader",
+    "less-loader"
+  ],
+  "fallback": "style-loader",
+  "publicPath": ""
+})
+      },
+      {
+        "include": [
+          path.join(process.cwd(), "src/styles.css")
+        ],
+        "test": /\.styl$/,
+        "loaders": ExtractTextPlugin.extract({
+  "use": [
+    "css-loader?{\"sourceMap\":false,\"importLoaders\":1}",
+    "postcss-loader",
+    "stylus-loader?{\"sourceMap\":false,\"paths\":[]}"
+  ],
+  "fallback": "style-loader",
+  "publicPath": ""
+})
+      },
+      {
+        "test": /\.ts$/,
+        "loader": "@ngtools/webpack"
       }
     ]
   },
-  plugins: [
-
-    // Plugin: CommonsChunkPlugin
-    // Description: Shares common code between the pages.
-    // It identifies common modules and put them into a commons chunk.
-    //                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
-    // See: https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
-    // See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
-    new webpack.optimize.CommonsChunkPlugin({
-      name: ['vendor', 'polyfills'],
-      minChunks: Infinity
-    }),
-    // Plugin: CopyWebpackPlugin
-    // Description: Copy files and directories in webpack.
-    //
-    // Copies project static assets.
-    //
-    // See: https://www.npmjs.com/package/copy-webpack-plugin
-    new CopyWebpackPlugin([{
-      from: 'src/assets',
-      to: 'assets'
-    }]),
-<<<<<<< HEAD
-    new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
-=======
-    // new HtmlWebpackPlugin({ title: 'Tree-shaking' }),
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
-    /**
-     * Plugin LoaderOptionsPlugin (experimental)
-     *
-     * See: https://gist.github.com/sokra/27b24881210b56bbaff7
-     */
-    new LoaderOptionsPlugin({
-      debug: true,
-      options: {
-        /**
-         * Static analysis linter for TypeScript advanced options configuration
-         * Description: An extensible linter for the TypeScript language.
-         *
-         * See: https://github.com/wbuchwalter/tslint-loader
-         */
-        tslint: {
-          emitErrors: false,
-          failOnHint: false,
-          resourcePath: 'src'
-        },
+  "plugins": [
+    new NoEmitOnErrorsPlugin(),
+    new GlobCopyWebpackPlugin({
+      "patterns": [
+        "assets",
+        "favicon.ico"
+      ],
+      "globOptions": {
+        "cwd": "/home/devwurm/Work/Publications/electron-ng2-article/article1/angular-2-electron-seed/src",
+        "dot": true,
+        "ignore": "**/.gitkeep"
       }
     }),
+    new CopyWebpackPlugin([{
+      context: path.resolve(__dirname, "src"),
+      from: "entry.js"
+    }]),
+    new ProgressPlugin(),
+    new HtmlWebpackPlugin({
+      "template": "./src/index.html",
+      "filename": "./index.html",
+      "hash": false,
+      "inject": true,
+      "compile": true,
+      "favicon": false,
+      "minify": false,
+      "cache": true,
+      "showErrors": true,
+      "chunks": "all",
+      "excludeChunks": [],
+      "title": "Webpack App",
+      "xhtml": true,
+      "chunksSortMode": function sort(left, right) {
+        let leftIndex = entryPoints.indexOf(left.names[0]);
+        let rightindex = entryPoints.indexOf(right.names[0]);
+        if (leftIndex > rightindex) {
+            return 1;
+        }
+        else if (leftIndex < rightindex) {
+            return -1;
+        }
+        else {
+            return 0;
+        }
+    }
+    }),
+    new BaseHrefWebpackPlugin({}),
+    new CommonsChunkPlugin({
+      "name": "inline",
+      "minChunks": null
+    }),
+    new CommonsChunkPlugin({
+      "name": "vendor",
+      "minChunks": (module) => module.resource && module.resource.startsWith(nodeModules),
+      "chunks": [
+        "main"
+      ]
+    }),
+    new ExtractTextPlugin({
+      "filename": "[name].bundle.css",
+      "disable": true
+    }),
+    new LoaderOptionsPlugin({
+      "sourceMap": false,
+      "options": {
+        "postcss": [
+          autoprefixer(),
+          postcssUrl({"url": (URL) => {
+            // Only convert root relative URLs, which CSS-Loader won't process into require().
+            if (!URL.startsWith('/') || URL.startsWith('//')) {
+                return URL;
+            }
+            if (deployUrl.match(/:\/\//)) {
+                // If deployUrl contains a scheme, ignore baseHref use deployUrl as is.
+                return `${deployUrl.replace(/\/$/, '')}${URL}`;
+            }
+            else if (baseHref.match(/:\/\//)) {
+                // If baseHref contains a scheme, include it as is.
+                return baseHref.replace(/\/$/, '') +
+                    `/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
+            }
+            else {
+                // Join together base-href, deploy-url and the original URL.
+                // Also dedupe multiple slashes into single ones.
+                return `/${baseHref}/${deployUrl}/${URL}`.replace(/\/\/+/g, '/');
+            }
+        }})
+        ],
+        "sassLoader": {
+          "sourceMap": false,
+          "includePaths": []
+        },
+        "lessLoader": {
+          "sourceMap": false
+        },
+        "context": ""
+      }
+    }),
+    new AotPlugin({
+      "mainPath": "main.ts",
+      "hostReplacementPaths": {
+        "environments/environment.ts": "environments/environment.ts"
+      },
+      "exclude": [],
+      "tsConfigPath": "src/tsconfig.app.json",
+      "skipCodeGeneration": true
+    })
   ],
-  // we need this due to problems with es6-shim
-  node: {
-    global: true,
-    progress: true,
-    crypto: 'empty',
-    module: true,
-    clearImmediate: false,
-    setImmediate: false
-  }
+  "node": {
+    "fs": false,
+    "global": false,
+    "crypto": false,
+    "tls": false,
+    "net": false,
+    "process": false,
+    "module": false,
+    "clearImmediate": false,
+    "setImmediate": false,
+    "Buffer": false,
+    "__filename": false,
+    "__dirname": false
+}
 };
-
-/**
- * Target Electron
- */
-config.target = 'electron-renderer';
-module.exports = config;
-<<<<<<< HEAD
-// module.exports = {
-// entry: path.resolve('./index.js'),
-// target: 'node', // in order to ignore built-in modules like path, fs, etc. 
-// externals: [nodeExternals()], // in order to ignore all modules in node_modules folder 
-// output: {
-    // filename: 'bundle.js',
-// }
-
-// };
-=======
->>>>>>> 7fda63211fc401b1119c600388380c11db5f4fe4
