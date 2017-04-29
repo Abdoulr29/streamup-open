@@ -1,9 +1,9 @@
 # StreamUp-Open
 ## What you get
-* Electron
-* Angular 4
-* Angular-CLI 1.0.0
-* Bundling and transpiling with Webpack (Typescript, SASS, LESS, Stylus, etc.)
+* Native Cross platform application
+* Easy Hosting with a touch of feeling
+
+##Developement
 * Development server with LiveReload
 * Karma, Jasmine and Protractor for testing
 * Code scaffolding via Angular-CLI
