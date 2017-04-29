@@ -1,8 +1,4 @@
-# Angular - Electron seed
-A biolerplate for building cross platform desktop apps with [Electron](http://electron.atom.io/), [Angular](https://angular.io/) and the [Angular-CLI](https://github.com/angular/angular-cli).
-
-This project is based on Angular-CLI version 1.0.0.
-
+# StreamUp-Open
 ## What you get
 * Electron
 * Angular 4
