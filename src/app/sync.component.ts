@@ -1,15 +1,13 @@
 import { HttpClientService } from './services/http-client.service';
-
 import { Mkdir as Dir } from './extensions/dir/mkdir';
-
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 HttpClientService
 import electron = require('electron');
-let { ipcRenderer } = electron;
+const { ipcRenderer } = electron;
 
 
 @Component({
-    selector: 'sbox',
+    selector: 'app-sbox',
     styleUrls: ['./sync.component.css'],
     encapsulation: ViewEncapsulation.None,
     templateUrl: './sync.component.html',
@@ -17,22 +15,26 @@ let { ipcRenderer } = electron;
 })
 
 export class SyncComponent implements OnInit {
-    isDarkTheme: boolean = false;
-    // db = new DB();
+    // isDarkTheme: boolean = false;
+    state:string='smal';
+    protected  user:string;
+    protected  percent:number;
+    protected file_shared:number;
+    protected connections:number;
     dir = new Dir();
     constructor(private http: HttpClientService) {
-
+        
 
     }
     copyFolders(): Promise<any> {
-        console.log('here is called');
+        
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 this.http.getFolders()
                     .subscribe(res => {
 
                         res.forEach(folder => {
-                            // this.db.saveFolder(folder);
+                            
                             if (folder.parent === 0) {
                                 if (folder.has_copy === 1) {
                                     this.createFolder(folder.name + '(' + folder.copy_count + ')');
@@ -99,8 +101,27 @@ export class SyncComponent implements OnInit {
     createFolder(name: String) {
 
         this.dir.create('Sbox/' + name);
-        // new Git().init('Sbox/' + name);
+        
+    }
+    getUser(){
+      return this.user = 'Richie';
+    }
+    getDiskUsage(){
+      //TODO make data-percent accept this value!
+      //TODO how to create filter in angular2
+      //TODO how to use state in angular 2
+      //TODO how to use $uibModal or ui.bootstrap for angular 2 and start poping up modal
+      return this.percent=40;
 
+    }
+    getFileShared(){
+      return this.file_shared = 80;
+    }
+    getConnections(){
+      return this.connections = 400;
+    }
+    getFolders(){
+    
     }
 
 }

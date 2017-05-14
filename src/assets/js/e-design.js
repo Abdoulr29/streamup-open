@@ -3472,4 +3472,4 @@ Thanks to Philip Thrasher for the jquery plugin boilerplate for coffee script
 
   });
 }(window.jQuery);
-//# sourceMappingURL=e-design.js.map
+

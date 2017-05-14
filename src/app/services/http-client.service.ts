@@ -8,6 +8,7 @@ export class HttpClientService {
   constructor(private http: Http) { }
 
   createAuthorizationHeader(headers: Headers) {
+    
     //don't use this key get your own! on streamupbox.com and change URL from localhost to https://streamupbox.com
     // tslint:disable-next-line:max-line-length
 
@@ -15,7 +16,7 @@ export class HttpClientService {
 
   }
   get(url) {
-    let headers = new Headers();
+    const headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.get(url, {
       headers: headers
@@ -23,7 +24,7 @@ export class HttpClientService {
   }
 
   post(url, data) {
-    let headers = new Headers();
+    const headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.post(url, data, {
       headers: headers
@@ -32,6 +33,7 @@ export class HttpClientService {
 
 
   getFolders() {
+
     // {undefined/undefined} is supposed to be the parent/subfolders of a folder id if any
 
     return this.get( 'http://localhost:8000/api/folders/list')

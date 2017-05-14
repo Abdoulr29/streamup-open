@@ -1,24 +1,21 @@
 var os = require('os');
 var fs = require('fs');
 import electron = require('electron');
-let { ipcRenderer } = electron;
+
 export class Mkdir {
 
-    
-    public create(dir: string) {
-        
-       setTimeout((res) => {
-                let newDir = os.homedir() + '/' + dir;
-                fs.exists(newDir, function (params, status) {
 
+  public create(dir: string) {
 
-        let newDir = os.homedir() + '/' + dir;
-        // os.homedir() + '/desktop' + dir;
+    setTimeout((res) => {
+        const newDir = os.homedir() + '/' + dir;
         fs.exists(newDir, function (params, status) {
-            // if (process.platform = 'linux') {
-
+            const newDir = os.homedir() + '/' + dir;
+            // os.homedir() + '/desktop' + dir;
+            fs.exists(newDir, function (params, status) {
+           
             if (status !== true) {
-                fs.mkdir(newDir, function (_, t) { });
+                fs.mkdir(newDir, function (_, t) {});
                 fs.chmod(newDir, '777', function (_, t) {
 
                 });
@@ -28,11 +25,12 @@ export class Mkdir {
 
                 });
             }
-  
 
-                });
-            }, 0);
+
+            });
         });
-    }
-}
 
+    }, 0);
+
+  }
+}
