@@ -44,7 +44,10 @@ module.exports = {
       "./src/polyfills.ts"
     ],
     "styles": [
-      "./src/styles.css"
+      "./src/assets/css/styles.css",
+      "./src/assets/css/app.css",
+      "./src/assets/css/font-awesome.css",
+      "./src/assets/css/simple-line-icons.css"
     ]
   },
   "output": {
@@ -80,7 +83,12 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css"),
+
+          
         ],
         "test": /\.css$/,
         "loaders": [
@@ -91,7 +99,11 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
+
         ],
         "test": /\.scss$|\.sass$/,
         "loaders": [
@@ -103,7 +115,10 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.less$/,
         "loaders": [
@@ -115,7 +130,10 @@ module.exports = {
       },
       {
         "exclude": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.styl$/,
         "loaders": [
@@ -127,7 +145,10 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.css$/,
         "loaders": ExtractTextPlugin.extract({
@@ -141,7 +162,10 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.scss$|\.sass$/,
         "loaders": ExtractTextPlugin.extract({
@@ -156,7 +180,10 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.less$/,
         "loaders": ExtractTextPlugin.extract({
@@ -171,7 +198,10 @@ module.exports = {
       },
       {
         "include": [
-          path.join(process.cwd(), "src/styles.css")
+          path.join(process.cwd(), "src/assets/css/styles.css"),
+          path.join(process.cwd(),"src/assets/css/app.css"),
+          path.join(process.cwd(),"src/assets/css/font-awesome.css"),
+          path.join(process.cwd(),"src/assets/css/simple-line-icons.css")
         ],
         "test": /\.styl$/,
         "loaders": ExtractTextPlugin.extract({
@@ -198,7 +228,7 @@ module.exports = {
         "favicon.ico"
       ],
       "globOptions": {
-        "cwd": "/home/devwurm/Work/Publications/electron-ng2-article/article1/angular-2-electron-seed/src",
+        "cwd": "./src",
         "dot": true,
         "ignore": "**/.gitkeep"
       }
