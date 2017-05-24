@@ -95,3 +95,6 @@ input:checked + .sliding:before {
     min-height: 140px;
     flex: 1;
 }
+.isAsideTaggledCss{
+    margin-left:-15%
+}

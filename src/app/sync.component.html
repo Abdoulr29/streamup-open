@@ -17,11 +17,9 @@
       font-family: 'Maitree', serif;
     }
   </style>
-  <script src="assets/js/jquery/dist/jquery.js"></script>
-  <script src="assets/js/e-design.js"></script>
-  <script src="assets/js/bootstrapValidator.js"></script>
+
 </head>
-<section class="vbox">
+<section class="vbox" >
   <header class="header header-md navbar navbar-fixed-top-xs" id='header'>
 
     <div class="navbar-header aside bg-info dk nav-xs">
@@ -31,7 +29,7 @@
       <a href="#/Settings" class="navbar-brand text-lt" id='logo'>
 
         <i class="icon-settings"></i>
-        <!--<i><img src="/img/shortcuticon.ico"></i>-->
+        
         <img src="img/logo.png" alt="." class="hide">
         <span class="hidden-nav-xs m-l-sm">StreamUp Box</span>
       </a>
@@ -39,17 +37,10 @@
         <i class="icon-settings"></i>
       </a>
     </div>
-    <ul class="nav navbar-nav hidden-xs hidden-lg hidden-md hidden-md">
-      <li>
-        <a href="#nav,.navbar-header" data-toggle="class:nav-xs,nav-xs" class="text-muted">
-          <i class="fa fa-indent text"></i>
-          <i class="fa fa-dedent text-active"></i>
-        </a>
-      </li>
-    </ul>
+    
     <div class="flex">
       <div class="search-box">
-        <input type="text" class="form-control  sliding round right" style="width:60%;margin-left:26%;margin-top:1%">
+        <!--<input type="text" class="form-control  sliding round right" style="width:60%;margin-left:26%;margin-top:1%">-->
 
       </div>
       <div class="menu">
@@ -61,15 +52,6 @@
               </label>
           </ul>
 
-          <!--<ul class="nav navbar-nav">-->
-              <!--<li>-->
-                  <!--<a href="javascript:void(0)" class="dropdown-toggle bg clear" data-toggle="dropdown"  id='expand_btn' class="btn btn-primary">-->
-                  <!--<span class="fa fa-expand"></span><span class="wb-inv"></span></a>-->
-                  <!--<a style='display:none;' href="javascript:void(0)" class="dropdown-toggle bg clear" data-toggle="dropdown" style='background-color: #1babf8;color:#fff'-->
-                  <!--ng-cloak id='unexpand_btn' class="btn btn-success"><span class="fa fa-compress"></span><span class="wb-inv"></span></a>-->
-              <!--</li>-->
-          <!--</ul>-->
-
       </div>
 
     </div>
@@ -77,7 +59,7 @@
   <section>
     <section class="hbox stretch">
       <!-- .aside -->
-      <aside class="bg-dark dk nav-xs aside hidden-print" id="nav">
+      <!--<aside class="bg-dark dk nav-xs aside hidden-print" id="nav" >
         <section class="vbox">
           <section class="w-f-md">
             <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
@@ -163,182 +145,64 @@
             </div>
           </section>
         </section>
-      </aside>
+      </aside>-->
 
       <section id="content">
         <section class="vbox">
           <section class="w-f-md" id="bjax-target">
             <section class="hbox stretch">
 
-              <aside class="aside bg-light dk hidden-xs" id="sidebar">
+              <aside class="aside bg-light dk hidden-xs" id="sidebar"  *ngIf="isAsideTaggled">
                 <section class="vbox animated fadeInUp">
                   <section class="scrollable hover">
                     <div class="wrapper profile">
-                      <div class="text-center m-b m-t">
-                        <a href="#" class="thumb-md thumb-custom">
-                          <img src="./assets/images/user.jpg" class="img-circle">
-                        </a>
-                        <div>
-                          <div class="h4 m-t-sm">{{user}}</div>
-
-                        </div>
-                        <button class="btn btn-circle btn-success btn-sm custom-icon-edit"><i class="fa fa-camera"></i></button>
+                      <div class="text-center m-b m-t" style="min-height:40px">
+                          <!--extra files and folder option-->
                       </div>
-                      <!-- ````````````````````` Profile tabs ```````````````` -->
-                      <header class="panel-heading">
-                        <ul class="nav nav-tabs nav-justified">
-                          <li><a id="neutral" href="#home" data-toggle="tab">Profile</a></li>
-                          <li><a id="neutral" href="#profile" data-toggle="tab">My Activities</a></li>
-                        </ul>
-                      </header>
+                     
+                     
                     </div>
-                    <div class="wrapper details">
-                      <div class="tab-content">
-                        <div class="tab-pane active" id="home">
-                          <div class="col-md-6 text-center custom-grid-left">
-                            <p>Shared Files</p>
-                            <h5 class="custom-text">{{file_shared}}</h5>
-                          </div>
-                          <div class="col-md-6 text-center custom-grid-right">
-                            <p>Connections</p>
-                            <h5 class="custom-text">{{connections}}</h5>
-                          </div>
-                          <div class="col-md-6 text-center custom-grid-left">
-                            <p>IntegratedApps</p>
-                            <h5 class="custom-text">7</h5>
-                          </div>
-                          <div class="col-md-6 text-center custom-grid-right">
-                            <p>Hosted</p>
-                            <h5 class="custom-text">5</h5>
-                          </div>
-                          <div class="col-md-12" style="margin-top:30px;">
-                            <div class="inline">
-                              <div class="easypiechart" data-percent="40" data-line-width="10" data-track-color="#ccc" data-bar-color="#28f5fb" data-scale-color="#1cc1fb"
-                                data-size="188">
-                                <div>
-                                  <span class="h2 m-l-sm step">0</span>%
-                                  <span>of 2GB</span>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="tab-pane" id="profile">
-                        </div>
-                      </div>
-                    </div>
-                    <!-- ````````````````````` Profile tabs ```````````````` -->
+                    
+                   
                   </section>
                 </section>
               </aside>
-              <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                               The End Of Sidebar Components
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-              <!-- / side content -->
+        
               <section>
-
-                <section class="vbox" route-loader>
-
-                  <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                               The start Of the File Tables
-                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                  <section class="scrollable" style="margin: 60px auto;">
-                    <div class="col-sm-12 col-xs-12 col-md-12 col-lg-12">
-                      <section class="panel panel-default">
-
-                        <div id="folderinputbox" style="display: none;margin-top:58px" class="row create-folder-form">
-                          <div style="text-align:center;color:#9a9fa2;" class="col-xs-12 col-md-12 col-lg-12">
-                            <span class="fa fa-folder fa-4x">
-                                  </span><br />
-                            <h2>
-                              Create folder
-                            </h2>
-
-                          </div>
-                          <div class="col-xs-12 col-md-12 col-lg-12" style="color:#9a9fa2;margin-top:20px">
-
-                            <input id="clearInput" type="text" style="text-align:center;color:#9a9fa2; display: block;
-                               margin: 0; width: 100%;padding-top:5px;padding-bottom:5px;height:60%;font-size: 29px;border:solid white;"
-                              ng-model="folder.nested_name" placeholder="Name your folder" class="form-control" id='fdname'
-                              autofocus>
-
-                          </div>
-                          <div class="col-xs-12 col-md-12 col-lg-12" style="margin-top:16px">
-
-                          </div>
-                        </div>
-
-
-                        <!--  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-                                               The start Of the File Tables
-                          ~~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-                      </section>
-                    </div>
-                  </section>
-                </section>
+                  <!--left empty for the purpose-->
               </section>
             </section>
           </section>
-          <a href="#" class="hide nav-off-screen-block" data-toggle="class:nav-off-screen,open" data-target="#nav,html"></a>
+          
         </section>
+        
       </section>
+      
+      <!--ui-view here-->
+      <section>
+          <div class="col-md-12" style="margin-top:120px;margin-left:-17%;">
+            
+          <div class="inline" (click)="openDir()">
+            <div class="easypiechart" data-percent="40" data-line-width="10" data-track-color="#ccc" data-bar-color="#28f5fb" data-scale-color="#1cc1fb"
+
+              data-size="188">
+              <div>
+                <span class="h2 m-l-sm step">0</span>%
+                <span>of 2GB</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
     </section>
   </section>
-  
-
-  <!--part for changing views-->
-  
-  
-
 
 </section>
 
+<!--<section >
+  <p style="text-align:center;font-size:20px;">is not isAuthenticated</p>
+  <button style="margin-left:45%;" class="btn btn-info" (click)="authenticateNow()" >Authenticate now</button>
+</section>-->
 
-<script>
-  $("#unexpand_btn").hide();
-  $("#expand_btn").click(function () {
-    $("#sidebar").hide();
-    $("#nav").hide();
-    $("#logo").hide();
-    $("#expand_btn").hide();
-    $("#unexpand_btn").toggle('slow');
-  });
-  $("#unexpand_btn").click(function () {
-    $("#sidebar").show();
-    $("#expand_btn").toggle('fast');
-    $("#unexpand_btn").hide();
-    $("#nav").show();
-    $("#logo").show();
-  });
-  ///////////////////////////////////create folder/////////////////////
-  $("#createfolder").click(function () {
-    $("#sidebar").hide();
-    $("#nav").hide();
-    $("#logo").hide();
-    $("#mainbox").hide();
-    $("#header").hide();
-    $("#clearInput").val('');
-    $("#folderinputbox").toggle('fast');
-  });
-  $("#OncreateFolder").click(function () {
-
-    $("#clearInput").val('');
-    $("#folderinputbox").toggle('fast');
-  });
-  $("#cancelOncreateFolder").click(function () {
-    $("#sidebar").show();
-    $("#nav").show();
-    $("#logo").show();
-    $("#mainbox").show();
-    $("#header").show();
-    $("#folderinputbox").hide();
-  });
-  $("#OncreateFolder").click(function () {
-    $("#sidebar").show();
-    $("#nav").show();
-    $("#logo").show();
-    $("#mainbox").show();
-    $("#header").show();
-    $("#folderinputbox").hide();
-  });
-</script>

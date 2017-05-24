@@ -1,0 +1,61 @@
+<aside class="aside bg-light dk hidden-xs" id="sidebar">
+  <section class="vbox animated fadeInUp">
+    <section class="scrollable hover">
+      <div class="wrapper profile">
+        <div class="text-center m-b m-t">
+          <a href="#" class="thumb-md thumb-custom">
+            <img src="./assets/images/user.jpg" class="img-circle">
+          </a>
+          <div>
+            <div class="h4 m-t-sm">{{user}}</div>
+
+          </div>
+          <button class="btn btn-circle btn-success btn-sm custom-icon-edit"><i class="fa fa-camera"></i></button>
+        </div>
+        <!-- ````````````````````` Profile tabs ```````````````` -->
+        <header class="panel-heading">
+          <ul class="nav nav-tabs nav-justified">
+            <li><a id="neutral" href="#home" data-toggle="tab">Profile</a></li>
+            <li><a id="neutral" href="#profile" data-toggle="tab">My Activities</a></li>
+          </ul>
+        </header>
+      </div>
+      <div class="wrapper details">
+        <div class="tab-content">
+          <div class="tab-pane active" id="home">
+            <div class="col-md-6 text-center custom-grid-left">
+              <p>Shared Files</p>
+              <h5 class="custom-text">{{file_shared}}</h5>
+            </div>
+            <div class="col-md-6 text-center custom-grid-right">
+              <p>Connections</p>
+              <h5 class="custom-text">{{connections}}</h5>
+            </div>
+            <div class="col-md-6 text-center custom-grid-left">
+              <p>IntegratedApps</p>
+              <h5 class="custom-text">7</h5>
+            </div>
+            <div class="col-md-6 text-center custom-grid-right">
+              <p>Hosted</p>
+              <h5 class="custom-text">5</h5>
+            </div>
+            <div class="col-md-12" style="margin-top:30px;">
+              <div class="inline">
+                <div class="easypiechart" data-percent="40" data-line-width="10" data-track-color="#ccc" data-bar-color="#28f5fb" data-scale-color="#1cc1fb"
+                  data-size="188">
+                  <div>
+                    <span class="h2 m-l-sm step">0</span>%
+                    <span>of 2GB</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="tab-pane" id="profile">
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </section>
+</aside>

@@ -1,10 +1,10 @@
 {
-  "name": "YegoBox",
+  "name": "StreamUpBox",
   "main": "dist/entry.js",
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "run": "electron .",
+    "run": "electron dist/entry.js",
     "start": "concurrently \"webpack-dev-server --port=4200\" \"electron dist/entry.js\"",
     "ng": "ng",
     "build": "webpack",

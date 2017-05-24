@@ -4,10 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
 import { SyncComponent } from './sync.component';
-
+import { AsideComponent } from './aside/aside.component';
 @NgModule({
   declarations: [
-    SyncComponent
+    SyncComponent,
+    AsideComponent,
   ],
   imports: [
     BrowserModule,

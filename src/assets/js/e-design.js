@@ -753,7 +753,7 @@
      */
     $(function ()
     {
-        $("input[data-role=materialtags]").materialtags();
+        // $("input[data-role=materialtags]").materialtags();
     });
 })(window.jQuery);
 

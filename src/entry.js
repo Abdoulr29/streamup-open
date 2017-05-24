@@ -2,18 +2,32 @@ const {app, BrowserWindow} = require('electron')
 const path = require('path')
 const url = require('url')
 
+const ipc = require('electron').ipcMain
+const dialog = require('electron').dialog
+
+ipc.on('open-file-dialog', function (event) {
+  
+  dialog.showOpenDialog({
+    properties: ['openFile', 'openDirectory']
+  }, function (files) {
+    if (files) event.sender.send('selected-directory', files)
+  })
+})
+
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
 let win
-
 function createWindow () {
   // Create the browser window.
-  win = new BrowserWindow({width: 800, height: 600,fullscreen:false,autoHideMenuBar:true})
+  // win = new BrowserWindow({width: 800, height: 600,fullscreen:false,autoHideMenuBar:false})
+  win = new BrowserWindow({width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true})
 
   // and load the index.html of the app.
   win.loadURL(url.format({
-    pathname: path.join(__dirname, 'index.html'),
-    protocol: 'file:',
+    // pathname: path.join(__dirname, 'index.html'),
+    // protocol: 'file:',
+    pathname: 'localhost:4200',
+    protocol: 'http:',
     slashes: true
   }))
 
@@ -30,6 +44,7 @@ function createWindow () {
     // when you should delete the corresponding element.
     win = null
   })
+  
 }
 
 // This method will be called when Electron has finished

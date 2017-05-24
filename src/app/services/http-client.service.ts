@@ -11,12 +11,17 @@ export class HttpClientService {
     
     //don't use this key get your own! on streamupbox.com and change URL from localhost to https://streamupbox.com
     // tslint:disable-next-line:max-line-length
-
-    headers.append('authorization', 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjVlNjYzYTdjODczNGRjMmJkN2VlZjNkNTAwNGI3OWRmMmQxMzUzMDJjYjZlZjExOTE5MTBkNTI2ZjFkMTE4ZjRmZDBjYTc5MWZhYTMyMWFlIn0.eyJhdWQiOiIxIiwianRpIjoiNWU2NjNhN2M4NzM0ZGMyYmQ3ZWVmM2Q1MDA0Yjc5ZGYyZDEzNTMwMmNiNmVmMTE5MTkxMGQ1MjZmMWQxMThmNGZkMGNhNzkxZmFhMzIxYWUiLCJpYXQiOjE0OTIyNzEwOTYsIm5iZiI6MTQ5MjI3MTA5NiwiZXhwIjoxODA3ODAzODk2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.XH3VinULXxq-vzCrjpzkpol0QyKAyLE6_HwYXtbps56DYO5mooS8Ba4XwwVHLOOUsxjFLgVdFw226kar6Rbl19TQqdknnjjbiPfYQSYxqxSQmXDuaLOCPz7ChVsvOBJ6Xe-6AQLSNQ9BTUoR-cyWx7TbN1-Zf96TDckMPA_QRPz8ziYspTYBpabCjfsEQh-1CHiA-1Y7UdrEfFMaA8iH7sE1Sp9MyzZca3kRuQSjjE3SdomMyn3teTxvBy-UkZZS1PR4qKzRRE9cN_WrenZqsQqKxP2iCYU0k_rJ_-lgW10OP9riU5iGFk2wvX559HZslgqoij2Fx0evQsKBRZF9IRe00QSi-nQ2ZXs_VUBTpjMpbBepB_q8nR72lPfQypby8zAzOMKTh8BiVfQmiv-991o_3FyG3RQm4Flt7RVOFKvU6YSwFzH42rIC1_4fpU5FfIzYVfyc6rWZyfzXv7tlqtCgliE_GSl2XNUovgX0JYPSozuJ5QIAEvqdouBXpmZ2DHuxkJFHwHLZQ4NX2BE6yJPsYB7xSwSD1yS36iNg9HuOb5TV8z0v8W4z7jNhmTJ6Z5WbW4uiUKpLQeUpTsbvmGrWUAh6UieCLB32siD3vUqm0a7QbNuRwlCTVI0H3ZxLMvozMGkROQ9LruoAP4BbQrGK_Dc_dSOCtgp1wd5Fp34');
+    // headers.set('application/json','text/javascript');
+    
+    headers.set('authorization', 'Bearer ' + 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImEwMGNjMjBlZjcxYmVkYzllMjYwOGUxNmQ0MTAwMzZhNDExZmNjNzliMjZkMjUxZDQ2NjgxNmI3NzQxNjJmMWMyYTM5ZmQ2NWYxN2E1Y2U0In0.eyJhdWQiOiIxIiwianRpIjoiYTAwY2MyMGVmNzFiZWRjOWUyNjA4ZTE2ZDQxMDAzNmE0MTFmY2M3OWIyNmQyNTFkNDY2ODE2Yjc3NDE2MmYxYzJhMzlmZDY1ZjE3YTVjZTQiLCJpYXQiOjE0OTU1MTcyNjYsIm5iZiI6MTQ5NTUxNzI2NiwiZXhwIjoxODExMDUwMDY2LCJzdWIiOiIxIiwic2NvcGVzIjpbXX0.jVPHnEU4OJSUp_TV6RxXrTI9uKn2BALoVdrpeo2dJRw4jk5g4oXy5gXyxa2QKpOR6va42aMH21XOYcGJTcgSCT3FKTK41ixZWLgErMUrgaz6G1-6pwXrJhqPhZEmkhOFcARNzdJ5Qqlju3HyKCuF1vVV8gBH6CZEcaiCzUr7zwDY__GMQz0UzLOsFkJzblTYv1w9j9DT358TxR4J7n2Hl6K0FhW09DRugkFKqMaaOqrdsuh7uQlGoaFQYlHn33eP89-N4oMGwtKphCRMyUQGru4B5cpzhDcDjGw0oUxvfC7CQFk_FabpG4ZIhzcUQFFac3iVUOFFYTy03RiDgf17nuWH7YP2c7SKuKkHv5Ic-bNScMZM5oa13NNgT2vWQbs44JigqaHOsbilzYszMmaasW5wN06KSXxRFZTVWLydtAUNXlredvhIOwkVR7zUaBspqUNP7uy0AhFkq_2f8j4icAhGy6q444uTYkKFtkcUuCM-mMJ0vi5kUzW8nve46B18ofxS58QvWpWeiox_1cjQYymU77AXaU-w_Tc8Qz_yiGNlNxt09vyBaYDtidUBVnw8ZA3B7P8T4VdPtuD5YsqGwJGA-Wwj6ek-qv9xclTWePY9tvu_u4oJL7G_CsbDbo09eKQWnEd-kZdiO7_se4u4xQk_6pzX3_H9dk4M1HyEQCg');
 
   }
+  getUser(){
+    return this.get('http://localhost:8000/api/users')
+     .map(res => res.json());
+  }
   get(url) {
-    const headers = new Headers();
+    let headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.get(url, {
       headers: headers
@@ -24,7 +29,7 @@ export class HttpClientService {
   }
 
   post(url, data) {
-    const headers = new Headers();
+    let headers = new Headers();
     this.createAuthorizationHeader(headers);
     return this.http.post(url, data, {
       headers: headers
@@ -33,16 +38,11 @@ export class HttpClientService {
 
 
   getFolders() {
-
-    // {undefined/undefined} is supposed to be the parent/subfolders of a folder id if any
-
-    return this.get( 'http://localhost:8000/api/folders/list')
-
-      .map(res => res.json());
+    return this.get('http://localhost:8000/api/folders/list')
+     .map(res => res.json());   
   }
 
   getPath(childId: number) {
-    return this.get(process.env.sbox + '/api/gmePath/' + childId)
-      .map(res => res.json());
+   
   }
 }

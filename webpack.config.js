@@ -58,6 +58,7 @@ module.exports = {
       "./src/assets/css/app.css",
       "./src/assets/css/font-awesome.css",
       "./src/assets/css/simple-line-icons.css"
+      
     ]
   },
   "output": {

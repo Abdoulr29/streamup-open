@@ -14,8 +14,10 @@ import electron = require('electron');
 const {
   ipcRenderer
 } = electron;
+const ipc = require('electron').ipcRenderer
 
 
+var $ = require('../assets/js/jquery/dist/jquery.js');
 @Component({
   selector: 'app-sbox',
   styleUrls: ['./sync.component.css'],
@@ -25,17 +27,27 @@ const {
 })
 
 export class SyncComponent implements OnInit {
-  // isDarkTheme: boolean = false;
-  state: string = 'smal';
+  isDarkTheme: boolean = false;
+  isAsideTaggled: boolean = false;
+  selectDirBtn = document.getElementById('select-directory');
+  isAsideTaggledCss: string ='margin-left:-15%';
+  isAuthenticated: boolean = false;
   protected user: string;
   protected percent: number;
   protected file_shared: number;
   protected connections: number;
   dir = new Dir();
   constructor(private http: HttpClientService) {
-
-
+    this.getUser();
   }
+  openDir(){
+    
+    ipc.send('open-file-dialog')
+  }
+  authenticateNow(){
+    this.isAuthenticated = (this.isAuthenticated === true? false: true);
+  }
+  
   copyFolders(): Promise < any > {
 
     return new Promise((resolve, reject) => {
@@ -52,14 +64,14 @@ export class SyncComponent implements OnInit {
                   this.createFolder(folder.name);
                 }
               } else {
-                this.http.getPath(folder.id)
-                  .subscribe(response => {
-                    var tmp = [];
-                    response.forEach(subfolder => {
-                      tmp.push(subfolder.name);
-                    });
-                    this.createFolder(tmp.join('/'));
-                  });
+                // this.http.getPath(folder.id)
+                //   .subscribe(response => {
+                //     var tmp = [];
+                //     response.forEach(subfolder => {
+                //       tmp.push(subfolder.name);
+                //     });
+                //     this.createFolder(tmp.join('/'));
+                //   });
               }
             });
             resolve();
@@ -79,14 +91,12 @@ export class SyncComponent implements OnInit {
     // });
 
   }
-
-
-
+  
   ngOnInit() {
 
     this.dir.create('Sbox');
-    this.copyFolders().then((res) => {}).catch((error) => {});
-    this.downloadFiles();
+    // this.copyFolders().then((res) => {}).catch((error) => {});
+    // this.downloadFiles();
 
     // this.download('http://localhost:8000/api/downloads/fileApi/3/0', 'name.png', function () {
     //     console.log('we have done downloading file');
@@ -114,7 +124,12 @@ export class SyncComponent implements OnInit {
 
   }
   getUser() {
-    return this.user = 'Richie';
+     
+     this.http.getUser().subscribe(res=>{
+       
+       
+      return this.user = res.name;
+    });
   }
   getDiskUsage() {
     //TODO make data-percent accept this value!
