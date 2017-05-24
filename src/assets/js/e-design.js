@@ -590,59 +590,59 @@
      * @param arg3
      * @returns {Array}
      */
-    $.fn.materialtags = function (arg1, arg2, arg3)
-    {
-        var results = [];
+    // $.fn.materialtags = function (arg1, arg2, arg3)
+    // {
+    //     var results = [];
 
-        this.each(function ()
-        {
-            var materialtags = $(this).data('materialtags');
-            // Initialize a new material tags input
-            if (!materialtags)
-            {
-                materialtags = new TagsMaterialize(this, arg1);
-                $(this).data('materialtags', materialtags);
-                results.push(materialtags);
+    //     this.each(function ()
+    //     {
+    //         var materialtags = $(this).data('materialtags');
+    //         // Initialize a new material tags input
+    //         if (!materialtags)
+    //         {
+    //             materialtags = new TagsMaterialize(this, arg1);
+    //             $(this).data('materialtags', materialtags);
+    //             results.push(materialtags);
 
-                // Init tags from $(this).val()
-                $(this).val($(this).val());
-            }
-            else if (!arg1 && !arg2)
-            {
-                // materialtags already exists
-                // no function, trying to init
-                results.push(materialtags);
-            }
-            else if (materialtags[arg1] !== undefined)
-            {
-                // Invoke function on existing tags input
-                if (materialtags[arg1].length === 3 && arg3 !== undefined)
-                {
-                    var retVal = materialtags[arg1](arg2, null, arg3);
-                }
-                else
-                {
-                    var retVal = materialtags[arg1](arg2);
-                }
-                if (retVal !== undefined)
-                {
-                    results.push(retVal);
-                }
-            }
-        });
+    //             // Init tags from $(this).val()
+    //             $(this).val($(this).val());
+    //         }
+    //         else if (!arg1 && !arg2)
+    //         {
+    //             // materialtags already exists
+    //             // no function, trying to init
+    //             results.push(materialtags);
+    //         }
+    //         else if (materialtags[arg1] !== undefined)
+    //         {
+    //             // Invoke function on existing tags input
+    //             if (materialtags[arg1].length === 3 && arg3 !== undefined)
+    //             {
+    //                 var retVal = materialtags[arg1](arg2, null, arg3);
+    //             }
+    //             else
+    //             {
+    //                 var retVal = materialtags[arg1](arg2);
+    //             }
+    //             if (retVal !== undefined)
+    //             {
+    //                 results.push(retVal);
+    //             }
+    //         }
+    //     });
 
-        if (typeof arg1 == 'string')
-        {
-            // Return the results from the invoked function calls
-            return results.length > 1 ? results : results[0];
-        }
-        else
-        {
-            return results;
-        }
-    };
+    //     if (typeof arg1 == 'string')
+    //     {
+    //         // Return the results from the invoked function calls
+    //         return results.length > 1 ? results : results[0];
+    //     }
+    //     else
+    //     {
+    //         return results;
+    //     }
+    // };
 
-    $.fn.materialtags.Constructor = TagsMaterialize;
+    // $.fn.materialtags.Constructor = TagsMaterialize;
 
     /**
      * Most options support both a string or number as well as a function as
@@ -673,7 +673,7 @@
     /**
      * HtmlEncodes the given value
      */
-    var htmlEncodeContainer = $('<div />');
+    // var htmlEncodeContainer = $('<div />');
 
     function htmlEncode(value)
     {
