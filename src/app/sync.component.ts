@@ -9,13 +9,13 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
-HttpClientService
+
 import electron = require('electron');
 const {
   ipcRenderer
 } = electron;
 const ipc = require('electron').ipcRenderer
-
+// import {Sequelize} from 'sequelize';
 
 var $ = require('../assets/js/jquery/dist/jquery.js');
 @Component({
@@ -28,6 +28,7 @@ var $ = require('../assets/js/jquery/dist/jquery.js');
 
 export class SyncComponent implements OnInit {
   isDarkTheme: boolean = false;
+  sequelize:any;
   isAsideTaggled: boolean = false;
   selectDirBtn = document.getElementById('select-directory');
   isAsideTaggledCss: string ='margin-left:-15%';
@@ -93,8 +94,8 @@ export class SyncComponent implements OnInit {
   }
   
   ngOnInit() {
-
     this.dir.create('Sbox');
+    
     // this.copyFolders().then((res) => {}).catch((error) => {});
     // this.downloadFiles();
 

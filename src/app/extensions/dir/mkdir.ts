@@ -4,7 +4,6 @@ import electron = require('electron');
 
 export class Mkdir {
 
-
   public create(dir: string) {
 
     setTimeout((res) => {

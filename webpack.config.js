@@ -245,7 +245,7 @@ module.exports = {
     }),
     new CopyWebpackPlugin([{
       context: path.resolve(__dirname, "src"),
-      from: "entry.js"
+      from: "main.js"
     }]),
     new ProgressPlugin(),
     new HtmlWebpackPlugin({
