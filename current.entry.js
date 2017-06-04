@@ -81,18 +81,18 @@ if (handleSquirrelEvent(app)) {
 }
 const ipc = require('electron').ipcMain
 const dialog = require('electron').dialog
-let knew = require('knex')({
-  client:'sqlite3',
-  connection:{
-    filename:'./backend/database.sqlite'
-  }
-});
-ipc.on('save-user-config',function(event){
-  let result = knex.select('vpn').from('user_config');
-  result.then(function(row){
-    // event.send('any_receiver',row)
-  })
-})
+// let knew = require('knex')({
+//   client:'sqlite3',
+//   connection:{
+//     filename:'./backend/database.sqlite'
+//   }
+// });
+// ipc.on('save-user-config',function(event){
+//   let result = knex.select('vpn').from('user_config');
+//   result.then(function(row){
+    
+//   })
+// });
 ipc.on('open-file-dialog', function (event) {
   
   dialog.showOpenDialog({

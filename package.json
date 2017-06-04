@@ -3,6 +3,7 @@
   "main": "dist/main.js",
   "version": "0.0.0",
   "license": "MIT",
+  "description":"StreamUpBox Sync App",
   "scripts": {
     "run": "electron dist/main.js",
     "start": "concurrently \"webpack-dev-server --port=4200\" \"electron dist/main.js\"",

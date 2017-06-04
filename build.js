@@ -13,6 +13,7 @@ var settings = {
     exe: './YegoBox.exe'
 };
 
+
 resultPromise = electronInstaller.createWindowsInstaller(settings);
  
 resultPromise.then(() => {
