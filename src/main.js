@@ -1,9 +1,14 @@
-const {app, BrowserWindow} = require('electron')
+const {BrowserWindow} = require('electron')
+const electron = require('electron');
+const app = electron.app;
 const path = require('path')
 const url = require('url')
-
 const ipc = require('electron').ipcMain
 const dialog = require('electron').dialog
+require('./backend/squirel/squirel.js');
+require('./backend/db/saveData.js');
+
+//require squirel module
 
 ipc.on('open-file-dialog', function (event) {
   
@@ -12,7 +17,15 @@ ipc.on('open-file-dialog', function (event) {
   }, function (files) {
     if (files) event.sender.send('selected-directory', files)
   })
-})
+});
+
+ipc.on('openSettingModal',function(event){
+  const modalPath = path.join(__dirname, '/modal/setting-model.html')
+  let win = new BrowserWindow({ width: 400, height: 320, autoHideMenuBar:true })
+  win.on('close', function () { win = null })
+  win.loadURL(modalPath)
+  win.show()
+});
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.

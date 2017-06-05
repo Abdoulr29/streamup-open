@@ -235,6 +235,8 @@ module.exports = {
     new GlobCopyWebpackPlugin({
       "patterns": [
         "assets",
+        "backend",
+        "modal",
         "favicon.ico"
       ],
       "globOptions": {

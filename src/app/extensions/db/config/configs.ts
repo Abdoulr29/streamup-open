@@ -12,7 +12,6 @@ class Configs {
     this._loggingConfig = loggingConfig;
     // this._serverConfig = serverConfig;
   }
-
   getDatabaseConfig(): DatabaseConfig {
     return this._databaseConfig;
   }

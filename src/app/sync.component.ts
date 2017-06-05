@@ -48,7 +48,9 @@ export class SyncComponent implements OnInit {
   authenticateNow(){
     this.isAuthenticated = (this.isAuthenticated === true? false: true);
   }
-  
+  openSettingModal(){
+    ipc.send('openSettingModal');
+  }
   copyFolders(): Promise < any > {
 
     return new Promise((resolve, reject) => {
