@@ -10,7 +10,12 @@ module.exports = function (config) {
       require('karma-electron'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular/cli/plugins/karma')
+      require('@angular/cli/plugins/karma'),
+      'karma-junit-reporter',
+      'karma-chrome-launcher',
+      'karma-firefox-launcher',
+      'karma-ie-launcher',
+      'karma-jasmine'
     ],
     client:{
       useIframe: false,
@@ -39,7 +44,7 @@ module.exports = function (config) {
     colors: true,
     logLevel: config.LOG_INFO,
     autoWatch: true,
-    browsers: ['Electron'],
+    browsers: ['Firefox', 'FirefoxDeveloper', 'FirefoxAurora', 'FirefoxNightly','Electron'],
     singleRun: false
   });
 };
