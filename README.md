@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/richard457/streamup-open.svg?branch=master)](https://travis-ci.org/richard457/streamup-open)
+
 # StreamUp-Open
 ## What you get
 * Native Cross platform application
