@@ -37,7 +37,7 @@ export class HttpClientService {
 
 
   getFolders() {
-    return this.get('http://localhost:8000/api/folders/list')
+    return this.get('http://localhost:8000/api/folders/list?parent_id=0')
      .map(res => res.json());   
   }
 
