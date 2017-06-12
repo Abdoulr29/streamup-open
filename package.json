@@ -37,7 +37,7 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": "streamupforge"
+        "name": "StreamUpBox"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -47,7 +47,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "streamupforge"
+        "name": "StreamUpBox"
       }
     }
   },
@@ -62,6 +62,7 @@
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
     "electron-compile": "^6.4.1",
+    "flightplan": "^0.6.17",
     "pg": "^6.2.3",
     "pg-hstore": "^2.3.2",
     "rxjs": "^5.1.0",

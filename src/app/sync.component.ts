@@ -1,23 +1,10 @@
-import {
-  HttpClientService
-} from './services/http-client.service';
-import {
-  Mkdir as Dir
-} from './extensions/dir/mkdir';
-import {
-  Component,
-  OnInit,
-  ViewEncapsulation
-} from '@angular/core';
-
+import {HttpClientService} from './services/http-client.service';
+import {Mkdir as Dir} from './extensions/dir/mkdir';
+import {Component,OnInit,ViewEncapsulation} from '@angular/core';
 import electron = require('electron');
-const {
-  ipcRenderer
-} = electron;
-const ipc = require('electron').ipcRenderer
-// import {Sequelize} from 'sequelize';
+let {ipcRenderer} = electron;
+let ipc = require('electron').ipcRenderer
 
-var $ = require('../assets/js/jquery/dist/jquery.js');
 @Component({
   selector: 'app-sbox',
   styleUrls: ['./sync.component.css'],
@@ -40,9 +27,9 @@ export class SyncComponent implements OnInit {
   dir = new Dir();
   constructor(private http: HttpClientService) {
     this.getUser();
+    this.copyFolders();
   }
   openDir(){
-    
     ipc.send('open-file-dialog')
   }
   authenticateNow(){
@@ -52,59 +39,43 @@ export class SyncComponent implements OnInit {
     ipc.send('openSettingModal');
   }
   copyFolders(): Promise < any > {
-
-    return new Promise((resolve, reject) => {
+    
+      return new Promise((resolve, reject) => {
       setTimeout(() => {
         this.http.getFolders()
           .subscribe(res => {
-
-            res.forEach(folder => {
+            console.log(res);
+            res.data.forEach(folder => {
 
               if (folder.parent === 0) {
-                if (folder.has_copy === 1) {
-                  this.createFolder(folder.name + '(' + folder.copy_count + ')');
+                if (folder.has_copy === false) {
+                  console.log(folder.name);
+                  this.createFolder(folder.name);
                 } else if (folder.has_copy === 0) {
                   this.createFolder(folder.name);
                 }
               } else {
-                // this.http.getPath(folder.id)
-                //   .subscribe(response => {
-                //     var tmp = [];
-                //     response.forEach(subfolder => {
-                //       tmp.push(subfolder.name);
-                //     });
-                //     this.createFolder(tmp.join('/'));
-                //   });
+                //implement creating subFolder here
               }
             });
             resolve();
-
           });
       }, 0);
     });
-
   }
   download(uri: string, filename: string, callback: any) {
-    //TODO set auth token on this download request 
-    // request.head(uri, function (err, res, body) {
-
-    //     request(uri).pipe(fs.createWriteStream(os.homedir() + '/Sbox/' + filename)).on('close', callback);
-
-
-    // });
-
+    
   }
   
   ngOnInit() {
-    this.dir.create('Sbox');
-    
+    // (localStorage.getItem("isAuthenticated") !=null)?ipc.send("isNotAuthenticated"):return;
+    //show login modal
+    this.dir.create('Sbox');    
     // this.copyFolders().then((res) => {}).catch((error) => {});
     // this.downloadFiles();
-
     // this.download('http://localhost:8000/api/downloads/fileApi/3/0', 'name.png', function () {
     //     console.log('we have done downloading file');
     // });
-
   }
   downloadFiles(): Promise < any > {
     return new Promise((resolve, reject) => {
@@ -119,28 +90,19 @@ export class SyncComponent implements OnInit {
   }
   autoFetch() {
 
-
   }
   createFolder(name: String) {
-
+    console.log('crreated dir'+ name);
     this.dir.create('Sbox/' + name);
 
   }
   getUser() {
-     
-     this.http.getUser().subscribe(res=>{
-       
-       
+    this.http.getUser().subscribe(res=>{
       return this.user = res.name;
     });
   }
   getDiskUsage() {
-    //TODO make data-percent accept this value!
-    //TODO how to create filter in angular2
-    //TODO how to use state in angular 2
-    //TODO how to use $uibModal or ui.bootstrap for angular 2 and start poping up modal
     return this.percent = 40;
-
   }
   getFileShared() {
     return this.file_shared = 80;

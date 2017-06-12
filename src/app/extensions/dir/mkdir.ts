@@ -10,7 +10,7 @@ export class Mkdir {
         const newDir = os.homedir() + '/' + dir;
         fs.exists(newDir, function (params, status) {
             const newDir = os.homedir() + '/' + dir;
-            // os.homedir() + '/desktop' + dir;
+            
             fs.exists(newDir, function (params, status) {
            
             if (status !== true) {
