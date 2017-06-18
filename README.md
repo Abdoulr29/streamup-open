@@ -9,17 +9,21 @@
 * Development server with LiveReload
 * Karma, Jasmine and Protractor for testing
 * Code scaffolding via Angular-CLI
-* Application packaging via [electron-packager](https://github.com/electron-userland/electron-packager)
+* Application packaging via [electron-forge]
 * Yarn
 
 ## Getting started
 Use the seed via git:
 ```sh
-git clone https://github.com/DevWurm/angular-electron-seed.git my-project
+git clone https://github.com/richard457/streamup-open.git streamup-open
 ```
-After this change into `my-project` and run
+After this change into `streamup-open` and run
 ```sh
+npm install -g yarn
 yarn install
+```
+```sh
+Note that yarn can be replaced by npm 
 ```
 
 ## Available tools

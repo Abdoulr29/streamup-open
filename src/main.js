@@ -7,8 +7,9 @@ const ipc = require('electron').ipcMain
 const dialog = require('electron').dialog
 // require('./backend/squirel/squirel.js');
 // require('./backend/db/saveData.js');
-
 //require squirel module
+
+
 
 ipc.on('open-file-dialog', function (event) {
   

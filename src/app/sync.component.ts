@@ -68,10 +68,7 @@ export class SyncComponent implements OnInit {
   }
   
   ngOnInit() {
-    // (localStorage.getItem("isAuthenticated") !=null)?ipc.send("isNotAuthenticated"):return;
-    //show login modal
     this.dir.create('Sbox');    
-    // this.copyFolders().then((res) => {}).catch((error) => {});
     // this.downloadFiles();
     // this.download('http://localhost:8000/api/downloads/fileApi/3/0', 'name.png', function () {
     //     console.log('we have done downloading file');
@@ -86,15 +83,12 @@ export class SyncComponent implements OnInit {
   }
   isAutoSync(toggle ? : boolean): boolean {
     return toggle = !toggle;
-
   }
   autoFetch() {
 
   }
   createFolder(name: String) {
-    console.log('crreated dir'+ name);
     this.dir.create('Sbox/' + name);
-
   }
   getUser() {
     this.http.getUser().subscribe(res=>{
