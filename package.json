@@ -61,6 +61,7 @@
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
     "core-js": "^2.4.1",
+    "electron": "^1.6.11",
     "electron-compile": "^6.4.1",
     "flightplan": "^0.6.17",
     "pg": "^6.2.3",
