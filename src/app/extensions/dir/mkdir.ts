@@ -1,7 +1,6 @@
 var os = require('os');
 var fs = require('fs');
 import electron = require('electron');
-
 export class Mkdir {
 
   public create(dir: string) {
