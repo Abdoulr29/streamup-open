@@ -11,7 +11,8 @@ cache:
 branches:
   only:
     - master
-
+scripts": 
+  -make
 cache:
   directories:
     - node_modules
