@@ -10,7 +10,7 @@
     "ng": "ng",
     "build": "webpack -w",
     "testLocal": "karma start ./karma.conf.js",
-    "test": "./node_modules/.bin/karma start --browsers Firefox --single-run",
+    "test": "yarn install",
     "lint": "ng lint",
     "e2e": "protractor ./protractor.conf.js",
     "prepree2e": "npm start",
