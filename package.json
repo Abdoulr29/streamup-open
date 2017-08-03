@@ -1,8 +1,8 @@
 {
-  "name": "tmp",
-  "productName": "tmp",
+  "name": "streamupbox",
+  "productName": "sbox",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "streamupbox inc",
   "main": "src/index.ts",
   "scripts": {
     "start": "electron-forge start",
@@ -11,7 +11,7 @@
     "lint": "tslint src"
   },
   "keywords": [],
-  "author": "beast",
+  "author": "Richard",
   "license": "MIT",
   "config": {
     "forge": {
@@ -31,7 +31,7 @@
         "packageManager": "yarn"
       },
       "electronWinstallerConfig": {
-        "name": "tmp"
+        "name": "sbox"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -41,7 +41,7 @@
       },
       "windowsStoreConfig": {
         "packageName": "",
-        "name": "tmp"
+        "name": "sbox"
       }
     }
   },
@@ -65,5 +65,6 @@
     "electron-prebuilt-compile": "1.6.11",
     "tslint": "4.2.0",
     "typescript": "~2.1.4"
-  }
+  },
+  "repository": "https://github.com/RWBuild/streamup-open.git"
 }

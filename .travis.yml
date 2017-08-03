@@ -1,0 +1,23 @@
+language: node_js
+node_js: "7"
+install:
+
+  - yarn
+cache: yarn
+cache:
+  yarn: true
+  directories:
+    - node_modules
+branches:
+  only:
+    - master
+scripts": 
+  -make
+cache:
+  directories:
+    - node_modules
+
+notifications:
+  email:
+    on_success: always
+    on_failure: always
