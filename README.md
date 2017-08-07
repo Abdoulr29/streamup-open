@@ -28,7 +28,8 @@ Note that yarn can be replaced by npm
 
 ## Available tools
 ### Build
-Run `yarn run build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `electron-forge start` this will start the application.
+Run `electron-forge make` to build your desired installer based on the current OS you are using.
 
 ### Running the app
 To run the app based on the created build results, run `yarn run run`
