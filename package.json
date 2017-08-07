@@ -37,7 +37,7 @@
       },
       "electronPackagerConfig": {},
       "electronWinstallerConfig": {
-        "name": "StreamUpBox"
+        "name": "streamupbox"
       },
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
@@ -46,8 +46,7 @@
         "name": ""
       },
       "windowsStoreConfig": {
-        "packageName": "",
-        "name": "StreamUpBox"
+        "packageName": ""
       }
     }
   },
@@ -60,15 +59,15 @@
     "@angular/platform-browser": "^4.0.0",
     "@angular/platform-browser-dynamic": "^4.0.0",
     "@angular/router": "^4.0.0",
+    "@types/electron": "^1.4.30",
     "core-js": "^2.4.1",
     "electron-compile": "^6.4.1",
-    "flightplan": "^0.6.17",
-    "rxjs": "^5.1.0",
-    "zone.js": "^0.8.4",
-    "@types/electron": "^1.4.30",
     "electron-devtools-installer": "^2.0.1",
+    "flightplan": "^0.6.17",
     "reflect-metadata": "^0.1.9",
-    "tslib": "^1.4.0"
+    "rxjs": "^5.1.0",
+    "tslib": "^1.4.0",
+    "zone.js": "^0.8.4"
   },
   "devDependencies": {
     "babel-plugin-transform-async-to-generator": "^6.24.1",
