@@ -1,7 +1,7 @@
 {
   "name": "streamupbox",
-  "main": "src/main.js",
-  "version": "0.0.0",
+  "main": "src/index.ts",
+  "version": "0.1.0",
   "license": "MIT",
   "description": "StreamUpBox Sync App",
   "scripts": {
@@ -61,6 +61,7 @@
     "@angular/router": "^4.0.0",
     "@types/electron": "^1.4.30",
     "core-js": "^2.4.1",
+    "electron": "^1.6.11",
     "electron-compile": "^6.4.1",
     "electron-devtools-installer": "^2.0.1",
     "flightplan": "^0.6.17",
@@ -76,5 +77,6 @@
     "electron-prebuilt-compile": "1.6.11",
     "tslint": "^4.2.0",
     "typescript": "^2.1.6"
-  }
+  },
+  "repository": "https://github.com/RWBuild/streamup-open.git"
 }
