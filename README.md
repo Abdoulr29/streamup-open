@@ -1,58 +1,50 @@
-# Angular 2 electron starterkit featuring webpack
+[![Build Status](https://travis-ci.org/richard457/streamup-open.svg?branch=master)](https://travis-ci.org/richard457/streamup-open)
 
-A working demo of [electron] with [angular] using [Webpack], [ngrx] and [material2]
+# StreamUp-Open
+## What you get
+* Native Cross platform application
+* Easy Hosting with a touch of feeling
 
-This is a starter of angular (2 and above) and electron. Its a demo of oauth with github using angular and electron. It uses [ngrx] to manage state. You should create a config file as following :
+##Developement
+* Development server with LiveReload
+* Karma, Jasmine and Protractor for testing
+* Code scaffolding via Angular-CLI
+* Application packaging via [electron-forge]
+* Yarn
 
-```javascript
-{
-    "github": {
-        "client_id": "yourclientID",
-        "client_secret": "yoursecretkey",
-        "scopes": [
-            "user:email",
-            "notifications"
-        ]
-    }
-}
+## Getting started
+Use the seed via git:
+```sh
+git clone https://github.com/richard457/streamup-open.git streamup-open
+```
+After this change into `streamup-open` and run
+```sh
+npm install -g yarn
+yarn install
+```
+```sh
+Note that yarn can be replaced by npm 
 ```
 
-and place this file inside the "app" folder.Dont use this in production as for production you should have a safe server side URI and not have your secret key in the app folder.  
+## Available tools
+### Build
+Run `yarn run build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-When running it authenticates the user and goes to a page showing the username received from the authentication oauth workflow.
+### Running the app
+To run the app based on the created build results, run `yarn run run`
 
-## Run the example
+### Development server
+Run `yarn run start` for a dev server. The app will automatically launch and reload if you change any of the source files.
 
-```bash
-$ npm install
-$ npm run build
-$ npm run watch
-$ npm run electron
-```
+###  Code scaffolding
+If you have the Angular-CLI installed globally you can run `ng generate component component-name` to generate a new component. You can also use `ng generate directive/pipe/service/class/interface/enum/module`.
 
-## Packaging
+### Running unit tests
+Run `yarn run test` to execute the unit tests via [Karma](https://karma-runner.github.io).
 
-The app has support for packaging using 'electron-packager'
+### Running end-to-end tests
+Run `yarn run e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Before running the tests make sure you are serving the app in a dev server via `yarn run start`.
 
-```bash
-$ npm run package
-```
-
-Will run the package for OSX. You can also provide additional options to the package command such as
-
-*  --name : The package name
-*  --all : Will packaget the application to all the platforms
-*  --arch : Arches to be provided
-*  --icon : The icon for the app
-
-## License
-
-[MIT]
-
-[Webpack]: http://webpack.github.io
-[MIT]: http://markdalgleish.mit-license.org
-[angular]: http://angular.io
-[electron]: http://electron.atom.io/
-[ngrx]: https://github.com/ngrx/store
-[material2]: https://github.com/angular/material2
-[electron-packager]: https://github.com/electron-userland/electron-packager
+### Packaging releases
+Run `yarn run package:win`, `yarn run package:mac`, `yarn run package:linux` or `yarn run package:all` to build binary releases for the specified plattform(s).
