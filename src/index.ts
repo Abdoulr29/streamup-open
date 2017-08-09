@@ -1,4 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+var os=require('os');
+var rsync=require('rsync');
+ 
 import { enableLiveReload } from 'electron-compile';
 
 // Keep a global reference of the window object, if you don't, the window will
@@ -12,11 +15,16 @@ if (isDevMode) enableLiveReload();
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true
+    width: 300, height: 500,fullscreen:false,autoHideMenuBar:true
   });
+
+
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
+
+ 
+
 
   // Open the DevTools.
   if (isDevMode) {
@@ -37,6 +45,15 @@ const createWindow = async () => {
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
 
+    var rsyncs=new rsync()
+    .flags('avz')
+    .source(os.homedir()+'\\Sbox\\')
+    .destination(os.homedir()+ '\\bad');
+     rsyncs.execute((err,code,cmd)=>{
+    console.log(cmd);
+    console.log(err);
+    console.log(code);
+});
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar

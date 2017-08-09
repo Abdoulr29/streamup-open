@@ -8,24 +8,21 @@
 // const ipc = require('electron').ipcMain
 // const dialog = require('electron').dialog
 var electron=require('electron');
-var rsync=require('rsync');
-var os=require('os');
+
 const {app,BrowserWindow,ipcMain} =electron;
 let mainWindow;
 app.on('ready',()=>{
 
 mainWindow=new BrowserWindow({});
 mainWindow.loadURL(`file:\\${__dirname}/index.html`);
-rsync=new rsync()
-    
-    .flags('avz')
-    .source(os.homedir()+'\\Sbox\\')
-    .destination(os.homedir()+ '\\bad');
+// rsync=new rsync()
+//     .flags('avz')
+//     .source(os.homedir()+'\\Sbox\\')
+//     .destination(os.homedir()+ '\\bad');
 
-rsync.execute((err,code,cmd)=>{
-    console.log(err);
-
-}); 
+// rsync.execute((err,code,cmd)=>{
+//     console.log(err);
+// }); 
 
 });
 
