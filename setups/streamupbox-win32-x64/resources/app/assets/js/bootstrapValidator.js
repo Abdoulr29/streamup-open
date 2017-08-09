@@ -820,7 +820,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.base64 = {
         /**
          * Return true if the input value is a base 64 encoded string.
@@ -841,7 +841,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.between = {
         html5Attributes: {
             message: 'message',
@@ -886,7 +886,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.callback = {
         /**
          * Return result from the callback method
@@ -913,7 +913,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.choice = {
         html5Attributes: {
             message: 'message',
@@ -945,7 +945,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.creditCard = {
         /**
          * Return true if the input value is valid credit card number
@@ -1044,7 +1044,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.cvv = {
         html5Attributes: {
             message: 'message',
@@ -1154,7 +1154,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.date = {
         html5Attributes: {
             message: 'message',
@@ -1280,7 +1280,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.different = {
         html5Attributes: {
             message: 'message',
@@ -1317,7 +1317,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.digits = {
         /**
          * Return true if the input value contains digits only
@@ -1337,7 +1337,7 @@
         }
     }
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.emailAddress = {
         enableByHtml5: function($field) {
             return ('email' == $field.attr('type'));
@@ -1364,7 +1364,7 @@
         }
     }
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.file = {
         html5Attributes: {
             extension: 'extension',
@@ -1429,7 +1429,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.greaterThan = {
         html5Attributes: {
             message: 'message',
@@ -1469,7 +1469,7 @@
         }
     }
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.hex = {
         /**
          * Return true if and only if the input value is a valid hexadecimal number
@@ -1490,7 +1490,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.hexColor = {
         enableByHtml5: function($field) {
             return ('color' == $field.attr('type'));
@@ -1514,7 +1514,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.iban = {
         html5Attributes: {
             message: 'message',
@@ -1650,7 +1650,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.identical = {
         html5Attributes: {
             message: 'message',
@@ -1686,7 +1686,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.integer = {
         enableByHtml5: function($field) {
             return ('number' == $field.attr('type'));
@@ -1710,7 +1710,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.ip = {
         html5Attributes: {
             message: 'message',
@@ -1745,7 +1745,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.isbn = {
         /**
          * Return true if the input value is a valid ISBN 10 or ISBN 13 number
@@ -1825,7 +1825,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.lessThan = {
         html5Attributes: {
             message: 'message',
@@ -1865,7 +1865,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.mac = {
         /**
          * Return true if the input value is a MAC address.
@@ -1886,7 +1886,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.notEmpty = {
         enableByHtml5: function($field) {
             var required = $field.attr('required') + '';
@@ -1914,7 +1914,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.numeric = {
         /**
          * Validate decimal number
@@ -1935,7 +1935,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.phone = {
         html5Attributes: {
             message: 'message',
@@ -1973,7 +1973,7 @@
         }
     }
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.regexp = {
         html5Attributes: {
             message: 'message',
@@ -2011,7 +2011,7 @@
         }
     };
 }(window.jQuery));
-;(function ($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.remote = {
         html5Attributes: {
             message: 'message',
@@ -2069,8 +2069,8 @@
         }
     };
 }(window.jQuery));
-;(function($) {
-	$.fn.bootstrapValidator.validators.siren = {
+(function ($) {
+    $.fn.bootstrapValidator.validators.siren = {
 		/**
 		 * Check if a string is a siren number
 		 *
@@ -2093,8 +2093,8 @@
 		}
 	};
 }(window.jQuery));
-;(function($) {
-	$.fn.bootstrapValidator.validators.siret = {
+(function ($) {
+    $.fn.bootstrapValidator.validators.siret = {
         /**
          * Check if a string is a siret number
          *
@@ -2127,7 +2127,7 @@
 		}
 	};
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.step = {
         html5Attributes: {
             message: 'message',
@@ -2184,7 +2184,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.stringCase = {
         html5Attributes: {
             message: 'message',
@@ -2218,7 +2218,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.stringLength = {
         html5Attributes: {
             message: 'message',
@@ -2264,7 +2264,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.uri = {
         enableByHtml5: function($field) {
             return ('url' == $field.attr('type'));
@@ -2361,7 +2361,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.uuid = {
         html5Attributes: {
             message: 'message',
@@ -2397,7 +2397,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.vat = {
         html5Attributes: {
             message: 'message',
@@ -3581,7 +3581,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.vin = {
         /**
          * Validate an US VIN (Vehicle Identification Number)
@@ -3626,7 +3626,7 @@
         }
     };
 }(window.jQuery));
-;(function($) {
+(function ($) {
     $.fn.bootstrapValidator.validators.zipCode = {
         html5Attributes: {
             message: 'message',

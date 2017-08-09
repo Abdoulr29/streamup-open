@@ -36,7 +36,25 @@ const createWindow = async () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
+var rsync = require("rsyncwrapper");
+var os = require('os');
 
+rsync({
+    src: os.homedir() + '/Desktop/Sbox',
+    dest: os.homedir() + '/Desktop/Sbox2',
+    recursive: false,
+    exclude: ["*.txt"]
+},function (error:any,stdout:any,stderr:any,cmd:any) {
+    if ( error ) {
+        // failed
+        console.log('error:',error.message);
+        console.log('stdout:',stdout);
+        console.log('stderr:',stderr);
+        console.log('cmd:',cmd.message);
+    } else {
+        // success
+    }
+});
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar

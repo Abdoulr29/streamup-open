@@ -1859,10 +1859,7 @@ function tryCatch(fn) {
     return tryCatcher;
 }
 exports.tryCatch = tryCatch;
-;
-
-
-/***/ }),
+        /***/ }),
 /* 64 */
 /***/ (function(module, exports) {
 

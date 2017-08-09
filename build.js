@@ -18,7 +18,7 @@
 
 
 //playing with new idea
-"use strict"
+"use strict";
 const path = require('path');
 const _root = path.resolve(__dirname, '.');
 const rimraf = require('rimraf');

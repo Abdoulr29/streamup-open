@@ -1,10 +1,10 @@
-const {BrowserWindow} = require('electron')
+const {BrowserWindow} = require('electron');
 const electron = require('electron');
 const app = electron.app;
-const path = require('path')
-const url = require('url')
-const ipc = require('electron').ipcMain
-const dialog = require('electron').dialog
+const path = require('path');
+const url = require('url');
+const ipc = require('electron').ipcMain;
+const dialog = require('electron').dialog;
 // require('./backend/squirel/squirel.js');
 // require('./backend/db/saveData.js');
 //require squirel module
@@ -21,27 +21,27 @@ ipc.on('open-file-dialog', function (event) {
 });
 
 ipc.on('openSettingModal',function(event){
-  const modalPath = path.join(__dirname, '/modal/setting-model.html')
-  let win = new BrowserWindow({ width: 800, height: 620, autoHideMenuBar:true })
-  win.on('close', function () { win = null })
-  win.loadURL(modalPath)
+  const modalPath = path.join(__dirname, '/modal/setting-model.html');
+  let win = new BrowserWindow({ width: 800, height: 620, autoHideMenuBar:true });
+  win.on('close', function () { win = null });
+  win.loadURL(modalPath);
   win.show()
 });
 //unauthenticated modal
 ipc.on("isNotAuthenticated",function(event){
-  const modalPath = path.join(__dirname, '/modal/setting-model.html')
-  let win = new BrowserWindow({width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true})
-  win.on('close', function () { win = null })
-  win.loadURL(modalPath)
+  const modalPath = path.join(__dirname, '/modal/setting-model.html');
+  let win = new BrowserWindow({width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true});
+  win.on('close', function () { win = null });
+  win.loadURL(modalPath);
   win.show()
 });
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
-let win
+let win;
 function createWindow () {
   // Create the browser window.
   // win = new BrowserWindow({width: 800, height: 600,fullscreen:false,autoHideMenuBar:false})
-  win = new BrowserWindow({width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true})
+  win = new BrowserWindow({width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true});
 
   // and load the index.html of the app.
   win.loadURL(url.format({
@@ -50,11 +50,11 @@ function createWindow () {
     // pathname: 'localhost:4200',
     // protocol: 'http:',
     slashes: true
-  }))
+  }));
 
   // Open the DevTools when in dev mode.
   if(process.env.NODE_ENV=='development') {
-    win.webContents.openDevTools()
+    win.webContents.openDevTools();
     require('devtron').install()
   }
 
@@ -71,7 +71,7 @@ function createWindow () {
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
-app.on('ready', createWindow)
+app.on('ready', createWindow);
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
@@ -80,7 +80,7 @@ app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
     app.quit()
   }
-})
+});
 
 app.on('activate', () => {
   // On macOS it's common to re-create a window in the app when the
@@ -88,7 +88,7 @@ app.on('activate', () => {
   if (win === null) {
     createWindow()
   }
-})
+});
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
