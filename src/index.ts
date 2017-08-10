@@ -40,13 +40,13 @@ var os = require('os');
 var robocopy = require('robocopy');
 const path = require('path');
 var box1 = path.format({
-  dir: os.homedir()+'\\Desktop',
-  base: 'Sbox'
+  dir: os.homedir(),
+  base: '\\Sbox'
 });
 //TODO this command works: robocopy C:\Users\beast\Desktop\Sbox C:\Users\beast\Desktop\Sbox2 /E /MIR /XA:H /R:10 /W:10 check out why down here not!
 var box2 = path.format({
-  dir: os.homedir()+'\\Desktop',
-  base: 'Sbox2'
+  dir: os.homedir(),
+  base: '\\bad'
 });
 robocopy({
  
