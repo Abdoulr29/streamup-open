@@ -1,6 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { enableLiveReload } from 'electron-compile';
-import { synchronization} from './synchronization';
+import { synchronization } from './synchronization';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,7 +13,7 @@ if (isDevMode) enableLiveReload();
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-    width: 1382, height: 744,fullscreen:false,autoHideMenuBar:true
+    width: 1382, height: 744, fullscreen: false, autoHideMenuBar: true
   });
 
   // and load the index.html of the app.
@@ -37,12 +37,10 @@ const createWindow = async () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-var test;
-test=new synchronization();
-console.log("hhh");
-var os=require('os');
-var path=require('path');
-console.log(path.join());
+//sync files with  synchronization constructor
+let test;
+test = new synchronization('C:\\Users\\Abdoulr\\burn\\');
+
 
 
 // var os = require('os');
@@ -58,17 +56,17 @@ console.log(path.join());
 //   base: '\\bad'
 // });
 // robocopy({
- 
+
 //     // Specifies the path to the source directory. 
 //     source: box1,
- 
+
 //     // Specifies the destination path(s). 
 //     destination: box2,
- 
+
 //     // Indicates if multiple destinations should be copied serialy. By default  
 //     // multiple destinations are copied in parallel. 
 //     serial: false,
- 
+
 //     // Specifies the file or files to be copied. You can use wildcard characters (* or ?), if 
 //     // you want. If the File parameter is not specified, *.* is used as the default value. 
 //     files: ['*'],
