@@ -1,5 +1,6 @@
 import { app, BrowserWindow } from 'electron';
 import { enableLiveReload } from 'electron-compile';
+import { synchronization} from './synchronization';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -36,46 +37,58 @@ const createWindow = async () => {
 // initialization and is ready to create browser windows.
 // Some APIs can only be used after this event occurs.
 app.on('ready', createWindow);
-var os = require('os');
-var robocopy = require('robocopy');
-const path = require('path');
-var box1 = path.format({
-  dir: os.homedir(),
-  base: '\\Sbox'
-});
-//TODO this command works: robocopy C:\Users\beast\Desktop\Sbox C:\Users\beast\Desktop\Sbox2 /E /MIR /XA:H /R:10 /W:10 check out why down here not!
-var box2 = path.format({
-  dir: os.homedir(),
-  base: '\\bad'
-});
-robocopy({
+var test;
+test=new synchronization();
+console.log("hhh");
+var os=require('os');
+var path=require('path');
+console.log(path.join());
+
+
+// var os = require('os');
+// var robocopy = require('robocopy');
+// const path = require('path');
+// var box1 = path.format({
+//   dir: os.homedir(),
+//   base: '\\Sbox'
+// });
+// //TODO this command works: robocopy C:\Users\beast\Desktop\Sbox C:\Users\beast\Desktop\Sbox2 /E /MIR /XA:H /R:10 /W:10 check out why down here not!
+// var box2 = path.format({
+//   dir: os.homedir(),
+//   base: '\\bad'
+// });
+// robocopy({
  
-    // Specifies the path to the source directory. 
-    source: box1,
+//     // Specifies the path to the source directory. 
+//     source: box1,
  
-    // Specifies the destination path(s). 
-    destination: box2,
+//     // Specifies the destination path(s). 
+//     destination: box2,
  
-    // Indicates if multiple destinations should be copied serialy. By default  
-    // multiple destinations are copied in parallel. 
-    serial: false,
+//     // Indicates if multiple destinations should be copied serialy. By default  
+//     // multiple destinations are copied in parallel. 
+//     serial: false,
  
-    // Specifies the file or files to be copied. You can use wildcard characters (* or ?), if 
-    // you want. If the File parameter is not specified, *.* is used as the default value. 
-    files: ['*'],
-    copy: {
-      subdirs: true,
-      emptySubdirs: true
-    },
-    logging: {
-        listOnly: false,
-    },
-    output: {
-        file: 'copy.log',
-        overwrite: true,
-        unicode: true
-    },
-});
+//     // Specifies the file or files to be copied. You can use wildcard characters (* or ?), if 
+//     // you want. If the File parameter is not specified, *.* is used as the default value. 
+//     files: ['*'],
+//     copy: {
+//       subdirs: true,
+//       emptySubdirs: true
+//     },
+//     logging: {
+//         listOnly: false,
+//     },
+//     output: {
+//         file: 'copy.log',
+//         overwrite: true,
+//         unicode: true
+//     },
+// });
+
+/////////////////////////////////////////////////////////////////////////
+
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
