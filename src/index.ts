@@ -1,4 +1,7 @@
 import { app, BrowserWindow } from 'electron';
+var os=require('os');
+var rsync=require('rsync');
+ 
 import { enableLiveReload } from 'electron-compile';
 import { synchronization } from './synchronization';
 
@@ -13,11 +16,20 @@ if (isDevMode) enableLiveReload();
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
+<<<<<<< HEAD
     width: 1382, height: 744, fullscreen: false, autoHideMenuBar: true
+=======
+    width: 300, height: 500,fullscreen:false,autoHideMenuBar:true
+>>>>>>> 215f795025009b73e7caf4c8e5a9e0d9ea4b6e16
   });
+
+
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
+
+ 
+
 
   // Open the DevTools.
   if (isDevMode) {
@@ -87,6 +99,15 @@ test = new synchronization('C:\\Users\\Abdoulr\\burn\\');
 /////////////////////////////////////////////////////////////////////////
 
 
+    var rsyncs=new rsync()
+    .flags('avz')
+    .source(os.homedir()+'\\Sbox\\')
+    .destination(os.homedir()+ '\\bad');
+     rsyncs.execute((err,code,cmd)=>{
+    console.log(cmd);
+    console.log(err);
+    console.log(code);
+});
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
   // On OS X it is common for applications and their menu bar
