@@ -16,11 +16,7 @@ if (isDevMode) enableLiveReload();
 const createWindow = async () => {
   // Create the browser window.
   mainWindow = new BrowserWindow({
-<<<<<<< HEAD
-    width: 1382, height: 744, fullscreen: false, autoHideMenuBar: true
-=======
     width: 300, height: 500,fullscreen:false,autoHideMenuBar:true
->>>>>>> 215f795025009b73e7caf4c8e5a9e0d9ea4b6e16
   });
 
 
