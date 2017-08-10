@@ -36,7 +36,7 @@
       "electronInstallerDebian": {},
       "electronInstallerRedhat": {},
       "github_repository": {
-        "owner": "",
+        "owner": "Richard",
         "name": ""
       },
       "windowsStoreConfig": {
@@ -55,6 +55,7 @@
     "electron-compile": "^6.4.1",
     "electron-devtools-installer": "2.0.1",
     "reflect-metadata": "0.1.9",
+    "robocopy": "^0.1.15",
     "rsync": "^0.6.1",
     "tslib": "1.4.0",
     "zone.js": "0.7.4"

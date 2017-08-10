@@ -1,8 +1,8 @@
-const {BrowserWindow} = require('electron')
+const {BrowserWindow} = require('electron');
 const electron = require('electron');
 const app = electron.app;
-const path = require('path')
-const url = require('url')
+const path = require('path');
+const url = require('url');
 
 //handling winstaller events. it runs only when app is installed
 if (handleSquirrelEvent(app)) {
@@ -70,7 +70,7 @@ function handleSquirrelEvent(application) {
             application.quit();
             return true;
     }
-};
+}
 // this should be placed at top of main.js to handle setup events quickly
 if (handleSquirrelEvent(app)) {
     // squirrel event handled and app will exit in 1000ms, so don't do anything else
