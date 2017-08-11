@@ -5,8 +5,8 @@ import { Mkdir } from "./app/extensions/dir/Dir";
 
 @Component({
   selector: 'App',
-  styleUrls:['./style.css'],
-  templateUrl:'./app.html'
+  styleUrls: ['./style.css'],
+  templateUrl: './app.html'
 })
 export class AppComponent implements OnInit {
   dir = new Mkdir();
@@ -15,9 +15,7 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.dir.create('Sbox/' + name);
   }
-  
 }
-
 @NgModule({
   imports: [BrowserModule],
   declarations: [AppComponent],
