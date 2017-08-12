@@ -1,4 +1,10 @@
+import {
+    Sync
+} from "./Sync";
 export class Rsync implements Sync {
+    public path = require('path');
+    public Rsync = require('rsync');
+    public os = require('os');
     constructor() {
 
     }

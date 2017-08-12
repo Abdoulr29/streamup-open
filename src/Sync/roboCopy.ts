@@ -1,33 +1,31 @@
 import {
     Sync
-} from "./Sync";
+} from './Sync';
+import {SyncParams} from './SyncParams';
 export class RoboCopy implements Sync {
     public path = require('path');
-    public Rsync = require('rsync');
-    public os = require('os');
+     os = require('os');
     public robocopy = require('robocopy');
     public source: string;
     public destination: string;
-    constructor() {
 
-    }
-    syncRemote() {
+    syncRemote(params: SyncParams) {
         // sync with robocopy will execute on win32
-        this.destination = destination;
+
         this.robocopy({
-            // Specifies the path to the source directory. 
+            // Specifies the path to the source directory.
             source: this.os.homedir() + '\\Sbox\\',
 
-            // Specifies the destination path(s). 
+            // Specifies the destination path(s).
 
-            destination: destination,
+            destination: this.os.homedir(),
 
-            // Indicates if multiple destinations should be copied serialy. By default  
-            // multiple destinations are copied in parallel. 
+            // Indicates if multiple destinations should be copied serially. By default
+            // multiple destinations are copied in parallel.
             serial: false,
 
-            // Specifies the file or files to be copied. You can use wildcard characters (* or ?), if 
-            // you want. If the File parameter is not specified, *.* is used as the default value. 
+            // Specifies the file or files to be copied. You can use wildcard characters (* or ?), if
+            // you want. If the File parameter is not specified, *.* is used as the default value.
             files: ['*'],
             copy: {
                 subdirs: true,
@@ -41,6 +39,6 @@ export class RoboCopy implements Sync {
                 overwrite: true,
                 unicode: true
             },
-        })
+        });
     }
 }

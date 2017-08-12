@@ -1,9 +1,8 @@
-import { Sync } from "./sync/Sync";
+import { Sync } from './sync/Sync';
 export class SynchronizationManager {
-    
-    constructor(sync:Sync) {}
-    syncRemote():any{
-        return this.sync.syncRemote();
+    constructor(private sync: Sync) { }
+    syncRemote() {
+        this.sync.syncRemote();
     }
 
 }

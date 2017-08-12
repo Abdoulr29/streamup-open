@@ -1,4 +1,3 @@
-export interface Sync{
-    syncRemote():any;
-   
+export interface Sync {
+    syncRemote(): any;
 }
