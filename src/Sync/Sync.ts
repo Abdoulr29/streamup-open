@@ -1,3 +1,5 @@
+import { SyncParams } from "./SyncParams";
+
 export interface Sync {
-    syncRemote(): any;
+    syncRemote(_params:SyncParams): any;
 }

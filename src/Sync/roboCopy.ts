@@ -9,7 +9,7 @@ export class RoboCopy implements Sync {
     public source: string;
     public destination: string;
 
-    syncRemote(params: SyncParams) {
+    syncRemote(_params: SyncParams) {
         // sync with robocopy will execute on win32
 
         this.robocopy({

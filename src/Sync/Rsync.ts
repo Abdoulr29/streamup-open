@@ -8,7 +8,7 @@ export class Rsync implements Sync {
     constructor() {
 
     }
-    syncRemote() {
+    syncRemote(_params: SyncParams) {
  
         var rsync = new this.Rsync()
             .flags('avr')
