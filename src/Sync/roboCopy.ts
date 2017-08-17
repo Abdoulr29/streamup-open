@@ -3,14 +3,11 @@ import {
 } from './Sync';
 import {SyncParams} from './SyncParams';
 export class RoboCopy implements Sync {
-    public path = require('path');
+     path = require('path');
      os = require('os');
-    public robocopy = require('robocopy');
-    public source: string;
-    public destination: string;
+     robocopy = require('robocopy');
 
     syncRemote(_params: SyncParams) {
-        // sync with robocopy will execute on win32
 
         this.robocopy({
             // Specifies the path to the source directory.
@@ -19,7 +16,7 @@ export class RoboCopy implements Sync {
 
             // Specifies the destination path(s).
 
-            destination: this.os.homedir(),
+            destination:"//192.168.1.2\\Users\\Pc\\Desktop\\richie\\",
 
             // Indicates if multiple destinations should be copied serially. By default
             // multiple destinations are copied in parallel.
@@ -30,7 +27,8 @@ export class RoboCopy implements Sync {
             files: ['*'],
             copy: {
                 subdirs: true,
-                emptySubdirs: true
+                emptySubdirs: true,
+                sec:true
             },
             logging: {
                 listOnly: false,

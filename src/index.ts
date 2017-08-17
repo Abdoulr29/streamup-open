@@ -1,9 +1,7 @@
 import { app, BrowserWindow } from 'electron';
-var os=require('os');
-var rsync=require('rsync');
- 
 import { enableLiveReload } from 'electron-compile';
-import { synchronization } from './synchronization';
+import {RoboCopy} from './sync/roboCopy';
+import {Rsync} from './sync/Rsync';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -48,8 +46,7 @@ app.on('ready', createWindow);
 //sync files with  synchronization constructor
 
 //  new synchronization('C:\\Users\\Pc\\burned\\');
-import {RoboCopy} from './sync/roboCopy';
-import {Rsync} from './sync/Rsync';
+
 import {SynchronizationManager} from './SynchronizationManager';
 if(process.platform !== 'darwin'){
   (new SynchronizationManager(new RoboCopy())).syncRemote()

@@ -1,6 +1,5 @@
-import {
-    Sync
-} from "./Sync";
+import { Sync } from "./Sync";
+import { SyncParams } from "./SyncParams";
 export class Rsync implements Sync {
     public path = require('path');
     public Rsync = require('rsync');
