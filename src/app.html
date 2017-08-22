@@ -1,209 +1,42 @@
-<!DOCTYPE html>
-<html lang="en" class="app">
+<html>
 
 <head>
-  <meta charset="utf-8" />
-  <title>StreamUpBox | Online Drive</title>
-  <!--<ng-md-icon icon="close" style="fill: pink" size="64"></ng-md-icon> -->
-  <meta charset="utf-8" name="title" content="StreamUpBox">
-  <meta charset="utf-8" name="Author" content="Muragijimana Richard">
-  <meta charset="utf-8" name="twitter" content="https://twitter.com/strimup">
-  <meta charset="utf-8" name="description" content="A file Storage Made for Education and Big companies" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <script src="assets/js/e-design.js"></script>
-  
-  <style>
-    body {
-      font-family: 'Maitree', serif;
-    }
-  </style>
+  <title> Set Up StreamUpBox</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+    crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 
 </head>
-<section class="vbox" >
-  <header class="header header-md navbar navbar-fixed-top-xs" id='header'>
 
-    <div class="navbar-header aside bg-info dk nav-xs">
-      <a class="btn btn-link visible-xs" data-toggle="class:nav-off-screen,open" data-target="#nav,html">
-        <i class="icon-list"></i>
-      </a>
-      <a  class="navbar-brand text-lt" id='logo'>
-        <i class="icon-settings"></i>
-        <img src="img/logo.png" alt="." class="hide">
-        <span class="hidden-nav-xs m-l-sm">StreamUp Box</span>
-      </a>
-      <a class="btn btn-link visible-xs" data-toggle="dropdown" data-target=".user">
-        <i class="icon-settings"></i>
-      </a>
+<body>
+  <img src="logo.svg" width="300px" height="200px" style="margin-left:30%;padding:10%" />
+  <div class="container">
+    <!-- <i class="fa fa-google-plus" aria-hidden="true"> box-shadow:0px 2px 1px grey;</i> -->
+    <button class="btn btn-default  col-md-5" style="margin-bottom:15px">Sign in with Google</button></br>
+
+    <form action="#" method="POST" class="form-control">
+      <input type="email" name="email" placeholder="Email" class="form-control " /></br>
+      <input type="password" name="password" placeholder="Password" class="form-control" /></br>
+      <button type="submit" class="btn btn-primary btn-block"> Sign in </button></br>
+    </form>
+
+    <div class="pull-left">
+      <p><a href="#" id="streamup_api">Sign up</a></p>
     </div>
-    
-    <div class="flex">
-      <div class="search-box">
-        <!--<input type="text" class="form-control  sliding round right" style="width:60%;margin-left:26%;margin-top:1%">-->
-
-      </div>
-      <div class="menu">
-
-          <ul class="nav navbar-nav m-n hidden-xs nav-user user">
-              <label class="switch" style="margin-top:20%;">
-                  <input type="checkbox" checked>
-                  <div class="sliding round"></div>
-              </label>
-          </ul>
-
-      </div>
-
+    <div class="pull-right">
+      <p> Forget password?</p>
     </div>
-  </header>
-  <section>
-    <section class="hbox stretch">
-      <!-- .aside -->
-      <!--<aside class="bg-dark dk nav-xs aside hidden-print" id="nav" >
-        <section class="vbox">
-          <section class="w-f-md">
-            <div class="slim-scroll" data-height="auto" data-disable-fade-out="true" data-distance="0" data-size="10px" data-railOpacity="0.2">
+  </div>
+  <script type="text/javascript">
+    const shell = require('electron').shell
 
-              <nav class="nav-primary hidden-xs">
-                <ul class="nav bg clearfix">
-                  <li class="hidden-nav-xs padder m-t m-b-sm text-xs text-muted">
-                    Discover
-                  </li>
-                  <li>
-                    <a href="#/Files">
-                      <i class="icon-home icon"></i>
-                      <span >Home</span>
-                    </a>
-                  </li>
+    const streamupboxApi = document.getElementById('streamup_api')
 
-                  <li>
-                    <a href="javascript:void(0)">
-                      <i class="icon-share icon"></i>
-                      <b class="badge bg-primary pull-right"  ng-if="numof_shared != '0'">{{file_shared}}</b>
-                      <span>Shared</span>
-                    </a>
-                    <ul class="nav bg clearfix">
-                      <li>
-                        <a href="#sharedsend/">
-                          <i class="icon-reply icon"></i>
-                          <span >Sent</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="#sharedreceived/">
-                          <i class="icon-reply icon"></i>
-                          <span >Received</span>
-                        </a>
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <li>
-                      <a href="#" id="upload">
-                        <i class="icon-plus icon"></i>
-                        <span>Add New</span>
-                      </a>
-                      <ul class="nav bg clearfix">
-                        <li>
-                          <a id="upload" href="javascript:void(0)">
+    streamupboxApi.addEventListener('click', function (event) {
+      shell.openExternal('http://streamupbox.com')
+    })
+  </script>
+</body>
 
-                            <span>Files</span>
-                          </a>
-                        </li>
-                        <li id='createfolder'>
-                          <a href="javascript:void(0)">
-                            <span>Folder</span>
-                          </a>
-                        </li>
-                      </ul>
-                    </li>
-
-                    <li>
-                      <a href="#/bins">
-                        <i class="fa fa-recycle"></i>
-                        <span>Recycle Bin</span>
-                      </a>
-                    </li>
-                    <li>
-                        <a href="#/Upgrade">
-                            <i class="fa fa-paypal"></i>
-                            <span>Upgrade</span>
-                        </a>
-                    </li>
-
-
-                    <li>
-                      <a id="bugReport" href="#">
-                        <i class="fa fa-bug"></i>
-                        <span >Report bug</span>
-                      </a>
-                    </li>
-                    <li class="m-b hidden-nav-xs"></li>
-                </ul>
-              </nav>
-
-            </div>
-          </section>
-        </section>
-      </aside>-->
-
-      <section id="content">
-        <section class="vbox">
-          <section class="w-f-md" id="bjax-target">
-            <section class="hbox stretch">
-
-              <aside class="aside bg-light dk hidden-xs" id="sidebar">
-                <section class="vbox animated fadeInUp">
-                  <section class="scrollable hover">
-                    <div class="wrapper profile">
-                      <div class="text-center m-b m-t" style="min-height:40px">
-                          <!--extra files and folder option-->
-                      </div>
-                     
-                     
-                    </div>
-                    
-                   
-                  </section>
-                </section>
-              </aside>
-        
-              <section>
-                  <!--left empty for the purpose-->
-              </section>
-            </section>
-          </section>
-          
-        </section>
-        
-      </section>
-      
-      <!--ui-view here-->
-      <section>
-          <div class="col-md-12" style="margin-top:120px;margin-left:-17%;">
-            
-          <div class="inline" >
-            <div class="easypiechart" data-percent="40" data-line-width="10" data-track-color="#ccc" data-bar-color="#28f5fb" data-scale-color="#1cc1fb"
-
-              data-size="188">
-              <div>
-                  
-                <span class="h2 m-l-sm step">0</span>%
-                <span>of 2GB</span>
-                <script>
-                </script>
-              
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-    </section>
-  </section>
-
-</section>
-
-<!--<section >
-  <p style="text-align:center;font-size:20px;">is not isAuthenticated</p>
-  <button style="margin-left:45%;" class="btn btn-info" (click)="authenticateNow()" >Authenticate now</button>
-</section>-->
-
+</html>

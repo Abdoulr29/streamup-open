@@ -1,7 +1,7 @@
 import { app, BrowserWindow } from 'electron';
 import { enableLiveReload } from 'electron-compile';
-import {RoboCopy} from './sync/roboCopy';
-import {Rsync} from './sync/Rsync';
+import { RoboCopy } from './sync/roboCopy';
+import { Rsync } from './sync/Rsync';
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the JavaScript object is garbage collected.
@@ -13,16 +13,33 @@ if (isDevMode) enableLiveReload();
 
 const createWindow = async () => {
   // Create the browser window.
-  mainWindow = new BrowserWindow({
-    width: 1382, height:  744,fullscreen:false,autoHideMenuBar:true
+  var mainWindow = new BrowserWindow({
+    height: 630,
+    width: 440,
+    resizable: false,
+    icon: "logo.svg"
+    // height: 1382,
+    //     width: 744,
   });
-
+  mainWindow.setMenuBarVisibility(false)
 
 
   // and load the index.html of the app.
   mainWindow.loadURL(`file://${__dirname}/index.html`);
+  // var loginWindow = new BrowserWindow({
+  //   height:400,
+  //   width:500,
+  //   show:false
+  // });
+  // const mainMenu = Menu.buildFromTemplate(menuTemplate);
+  //     Menu.setApplicationMenu(mainMenu);
 
- 
+
+
+
+  // ipcMain.on('login', () => {
+  //   loginWindow.loadURL(`file://${__dirname}/login.html`);
+  // })
 
 
   // Open the DevTools.
@@ -35,7 +52,6 @@ const createWindow = async () => {
     // Dereference the window object, usually you would store windows
     // in an array if your app supports multi windows, this is the time
     // when you should delete the corresponding element.
-    mainWindow = null;
   });
 };
 
@@ -47,10 +63,10 @@ app.on('ready', createWindow);
 
 //  new synchronization('C:\\Users\\Pc\\burned\\');
 
-import {SynchronizationManager} from './SynchronizationManager';
-if(process.platform !== 'darwin'){
+import { SynchronizationManager } from './SynchronizationManager';
+if (process.platform !== 'darwin') {
   (new SynchronizationManager(new RoboCopy())).syncRemote()
-}else{
+} else {
   (new SynchronizationManager(new Rsync())).syncRemote()
 }
 
@@ -73,3 +89,35 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
+
+
+// add new window
+// function newWindow() {
+//     var addWindow = new BrowserWindow({
+//         height: 630,
+//         width: 440,
+//         title: "new windows",
+//         resizable: false
+//     })
+//       addWindow.loadURL(`file://${__dirname}/login.html`);}
+
+//       const menuTemplate = [
+//     {
+//         label: 'File',
+//         submenu: [{
+//             label: 'new'
+//         },
+//         {
+//             label: 'open',
+//             click() {
+//                 newWindow();
+
+//             }
+//         },
+
+//         { label: 'exit' }
+//         ]
+//     }
+
+// ];
+
